@@ -1,4 +1,4 @@
-﻿Public Class Window1
+﻿Public Class Peticiones
     Private Sub OnClick_Buscar(sender As Object, e As RoutedEventArgs)
 
     End Sub

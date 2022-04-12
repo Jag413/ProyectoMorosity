@@ -1,6 +1,6 @@
-﻿Class MainWindow
+﻿Class Informacion
     Private Sub OnClick_CambiaEstado(sender As Object, e As RoutedEventArgs)
-        Dim ventana As New Window1
+        Dim ventana As New Peticiones
         ventana.Show()
         Close()
     End Sub
