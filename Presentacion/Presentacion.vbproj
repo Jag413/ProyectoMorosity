@@ -80,7 +80,6 @@
     <Compile Include="WaitControl.xaml.vb">
       <DependentUpon>WaitControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WaitViewModel.vb" />
     <Page Include="Informacion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

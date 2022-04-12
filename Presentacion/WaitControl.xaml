@@ -1,4 +1,10 @@
-﻿<UserControl x:Class="WaitControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:presentacion="clr-namespace:Presentacion" d:DataContext="{d:DesignInstance Type=presentacion:WaitViewModel}" mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="200">
+﻿<UserControl x:Class="WaitControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:system="clr-namespace:System;assembly=mscorlib" 
+             xmlns:presentacion="clr-namespace:Presentacion"
+             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="200">
     <Grid x:Name="Animation" Visibility="Collapsed">
         <Grid.Resources>
             <!-- Particle Styling -->
@@ -89,9 +95,9 @@
                 </EventTrigger>
             </Canvas.Triggers>
             <Border x:Name="p0" Background="{StaticResource ParticleBackgroundColor}" Opacity="{StaticResource ParticleOpacity}">
-                <Border.RenderTransform>
-                    <RotateTransform x:Name="RotateTransform_1"" />
-                </Border.RenderTransform>
+                <!-- <Border.RenderTransform>
+                    <RotateTransform x:Name="RotateTransform_1" />
+                </Border.RenderTransform>-->
                 <Border.RenderTransformOrigin>
                     <Point X="{StaticResource RotationPointX}" Y="{StaticResource RotationPointY}" />
                 </Border.RenderTransformOrigin>

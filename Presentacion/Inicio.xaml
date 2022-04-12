@@ -3,43 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uc="clr-namespace:Presentacion;assembly=Presentacion" 
         xmlns:local="clr-namespace:Presentacion"
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml" 
         mc:Ignorable="d"
         Title="MOROSITY" Height="450" Width="800" Loaded="Inicio">
     <Window.Resources>
         <ResourceDictionary>
-            <Storyboard  x:Key="SplashAnimation">
+            <Storyboard x:Name="storyboard" x:Key="SplashAnimation">
                 <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <SplineDoubleKeyFrame KeyTime="00:00:00.0000000" Value="0.00" />
-                    <SplineDoubleKeyFrame KeyTime="00:00:01.0000000" Value="0.05" />
                     <SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="0.10" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:02.0000000" Value="0.15" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:02.5000000" Value="0.20" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:03.0000000" Value="0.25" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:03.5000000" Value="0.30" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:04.0000000" Value="0.35" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:04.5000000" Value="0.40" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:05.0000000" Value="0.45" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:5.5000000" Value="0.50" />
-                    <SplineDoubleKeyFrame KeyTime="00:00:6.0000000" Value="0.55" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:6.5000000" Value="0.60" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:7.0000000" Value="0.65" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:7.5000000" Value="0.70" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:8.0000000" Value="0.75" />
                     <SplineDoubleKeyFrame  KeyTime="00:00:8.5000000" Value="0.80" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:9.5000000" Value="0.85" />
                     <SplineDoubleKeyFrame KeyTime="00:00:10.0000000" Value="0.90" />
-                    <SplineDoubleKeyFrame KeyTime="00:00:10.5000000" Value="0.95" />
-                    <SplineDoubleKeyFrame  KeyTime="00:00:11.0000000" Value="1" />
+                    <SplineDoubleKeyFrame  KeyTime="00:00:11.0000000" Value="1" /> 
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard  Storyboard="{StaticResource SplashAnimation}" />
+        <EventTrigger x:Name="triger" RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="story" Storyboard="{StaticResource SplashAnimation}" />
         </EventTrigger>
     </Window.Triggers>
     <Window.Background>
@@ -56,7 +45,7 @@
         </Grid.RowDefinitions>
         
         <Grid x:Name="Logo" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <!--<uc:WaitControl  Grid.Row="0" Grid.Column="0" x:Name="WaitControl"></uc:WaitControl>-->
+            <local:WaitControl  Grid.Row="0" Grid.Column="0" x:Name="WaitControl" Margin="-111,-74,-31,-38" HorizontalAlignment="Left" Width="142" Height="112" VerticalAlignment="Top"></local:WaitControl>
 
         </Grid>
         <Grid x:Name="Entrar" Grid.Row="1" Grid.Column="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
