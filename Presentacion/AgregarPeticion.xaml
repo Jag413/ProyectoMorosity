@@ -30,8 +30,12 @@
         <Grid x:Name="txdni" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Label Height="30" Width="67" Content="DNI/CIF/NIE: " FontSize="10" VerticalAlignment="Center"/>
         </Grid>
-        <Grid x:Name="tbUsu" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBox x:Name="tbUsuario" Height="24" Width="350" Margin="10,0,-10,0"  />
+        <Grid x:Name="tipo" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <ListBox x:Name="lbtipo" Height="24" Width="350" Margin="10,0,-10,0">
+                <ListBoxItem Content="DNI"/>
+                <ListBoxItem Content="CIF"/>
+                <ListBoxItem Content="NIE"/>
+            </ListBox>
         </Grid>
         <Grid x:Name="dni" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
             <TextBox x:Name="tbDni" Height="24" Width="350" Margin="10,0,-10,0"  />

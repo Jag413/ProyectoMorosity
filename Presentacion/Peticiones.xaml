@@ -67,10 +67,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="ButtonAniadirPeticion" Grid.Column="0" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirNueva" Margin="160,82,0,78" >
+                <Button Name="ButtonAniadirPeticion" Grid.Column="0" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirPeticion" Margin="160,82,0,78" >
                     <TextBlock Height="50" Width="300" Text="AÑADIR NUEVA PETICION" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
                 </Button>
-                <Button Name="ButtonAniadirCliente" Grid.Column="1" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirNueva" Margin="160,82,0,78" >
+                <Button Name="ButtonAniadirCliente" Grid.Column="1" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirCliente" Margin="160,82,0,78" >
                     <TextBlock Height="50" Width="300" Text="AÑADIR NUEVO CLIENTE" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
                 </Button>
             </Grid>
