@@ -53,6 +53,8 @@
     <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20162.524, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
@@ -77,9 +79,6 @@
     <Compile Include="Peticiones.xaml.vb">
       <DependentUpon>Peticiones.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WaitControl.xaml.vb">
-      <DependentUpon>WaitControl.xaml</DependentUpon>
-    </Compile>
     <Page Include="Informacion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,10 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Peticiones.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WaitControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,9 +151,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\images.png" />
+    <Resource Include="Resources\usersO_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\key_OB_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\find_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lupa_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

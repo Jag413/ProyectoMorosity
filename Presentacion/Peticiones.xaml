@@ -30,8 +30,8 @@
                 <TextBox x:Name="TextBuscador" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0" />
             </Grid>
             <Grid x:Name="Okey" Grid.Column="2">
-                <Button x:Name="BotonBuscar" Height="24" Width="24" HorizontalAlignment="Left" Click="OnClick_Buscar">
-                    <!-- falta imagen lupa-->
+                <Button x:Name="BotonBuscar" Height="30" Width="30" HorizontalAlignment="Left" Click="OnClick_Buscar" Background="Transparent" BorderBrush="Transparent">
+                    <Image Name="lupa" ToolTip="User" Height="24" Width="24" HorizontalAlignment="Center"  Source="pack://application:,,,/Presentacion;component/Resources/lupa_16x16.png"/>
                 </Button>
             </Grid>
         </Grid>
@@ -62,9 +62,19 @@
             </Grid>
         </Grid>
         <Grid x:Name="ultimoGrid" Grid.Row="4">
-            <Button Name="ButtonAniadirNueva" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirNueva" Margin="160,82,0,78" >
-                <TextBlock Height="50" Width="300" Text="AÑADIR NUEVA PETICION" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
-            </Button>
+            <Grid x:Name="styleUltimo">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="ButtonAniadirPeticion" Grid.Column="0" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirNueva" Margin="160,82,0,78" >
+                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVA PETICION" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+                </Button>
+                <Button Name="ButtonAniadirCliente" Grid.Column="1" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirNueva" Margin="160,82,0,78" >
+                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVO CLIENTE" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+                </Button>
+            </Grid>
+            
         </Grid>
     </Grid>
 </Window>
