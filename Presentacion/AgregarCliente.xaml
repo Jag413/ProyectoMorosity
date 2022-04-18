@@ -5,8 +5,144 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
-        Title="AgregarCliente" Height="450" Width="800">
-    <Grid>
-        
+        Title="MOROSITY" Height="550" Width="1200">
+    <Grid x:Name="GridInfoFondo">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridInfoTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock Name="TextBlockTitulo" Text="NUEVO CLIENTE" FontSize="28" FontWeight="Bold" FontFamily="Times new roman" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <Grid x:Name="GridInfoNIF" Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoNIF" Grid.Column="0" Text="NIF/NIE/CIF: " VerticalAlignment="Center" Padding="40, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <ComboBox Name="cbTipo" Margin="10,0,-10,0" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="cENTER" Height="24" Width="166">
+                <ComboBoxItem Content="DNI"/>
+                <ComboBoxItem Content="NIE"/>
+                <ComboBoxItem Content="CIF"/>
+            </ComboBox>
+        </Grid>
+
+        <Grid x:Name="GridInfoNombre" Grid.Row="1" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoNombre" Grid.Column="0" Text="Nombre o" VerticalAlignment="Top"  Padding="20, 0, 0, 0" FontFamily="Times new roman" FontSize="20" Height="20" Margin="0,8,0,0"/>
+            <TextBlock x:Name="TxblocInfoRazonsocial" Grid.Column="0" Text="Razón Social:" VerticalAlignment="Stretch"  FontFamily="Times new roman" FontSize="20" Height="20" Margin="0,15,0,0"/>
+            <TextBox x:Name="TxboxInfoNombre" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoApellidos" Grid.Row="1" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoApellidos" Grid.Column="0" Text="Apellidos:" VerticalAlignment="Center" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoApellidos" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoTelefono" Grid.Row="2" Grid.Column="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfotlf" Grid.Column="0" Text="Teléfono:" VerticalAlignment="Center" Padding="40, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfotlf" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoTelefono2" Grid.Row="2" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoMovil" Grid.Column="0" Text="Movil:" VerticalAlignment="Center" Padding="30, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoMovil" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoFechaNac" Grid.Row="2" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoFechaNac" Grid.Column="0" Text="Fecha nacimiento:" VerticalAlignment="Center" FontFamily="Times new roman" FontSize="20"/>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="198" Height="31"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoDireccion" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoDireccion" Grid.Column="0" Text="Direccion:" VerticalAlignment="Center" Padding="40, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoDireccion" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+            <TextBlock x:Name="TxblocInfoCP" Grid.Column="2" Text="CP:" VerticalAlignment="Center" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoCP" Grid.Column="3" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoCiudad" Grid.Row="3" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoCiudad" Grid.Column="0" Text="Ciudad:" VerticalAlignment="Center" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoCiudad" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoProvincia" Grid.Row="4" Grid.Column="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoProvincia" Grid.Column="0" Text="Ciudad:" VerticalAlignment="Center" Padding="40, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoProvincia" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoNacionalidad" Grid.Row="4" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoNacionalidad" Grid.Column="0" Text="Nacionalidad:" VerticalAlignment="Center" Padding="10, 0, 0, 0" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoNacionalidad" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="GridInfoEmail" Grid.Row="4" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TxblocInfoEmail" Grid.Column="0" Text="Email:" VerticalAlignment="Center" FontFamily="Times new roman" FontSize="20"/>
+            <TextBox x:Name="TxbloxInfoEmail" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0"/>
+        </Grid>
+
+        <Grid x:Name="Aniadir" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AñadirButton" Grid.Column="0" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Aniadir">
+                <TextBlock Height="40" Width="200" Text="AÑADIR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+            </Button>
+            <Button x:Name="CancelarButton" Grid.Column="1" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Cancelar">
+                <TextBlock Height="40" Width="200" Text="CANCELAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="50,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+            </Button>
+        </Grid>
     </Grid>
 </Window>

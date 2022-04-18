@@ -28,7 +28,7 @@ namespace FakeEquifax.Controllers
              * apellido nvarchar
              * valoracion (isok) bool
              * valoraciondescripcion
-
+            */
             //ver si existe en db <- obtengo la persona o null
            
             //recuperar sus datos de escorring

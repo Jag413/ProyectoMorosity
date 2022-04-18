@@ -5,5 +5,8 @@
 
     Private Sub OnClic_Enviar(sender As Object, e As RoutedEventArgs)
 
+        'enviar datos a la base de datos
+
+        Close()
     End Sub
 End Class

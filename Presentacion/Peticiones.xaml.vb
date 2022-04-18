@@ -20,6 +20,6 @@
     End Sub
 
     Private Sub OnClic_AniadirCliente(sender As Object, e As RoutedEventArgs)
-
+        agregarcli.Show()
     End Sub
 End Class
