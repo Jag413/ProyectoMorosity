@@ -13,7 +13,7 @@
 
     <Grid x:Name="MainGridFondo">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -24,11 +24,29 @@
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="ImgUsu" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Label Height="30" Width="36" Content="TIPO: " FontSize="10" VerticalAlignment="Center"/>
+        <Grid x:Name="txtipo" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Label Height="30" Width="95" Content="Tipo: " FontSize="16"  FontFamily="Candara" HorizontalContentAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="{DynamicResource Color3}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
         </Grid>
         <Grid x:Name="txdni" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Label Height="30" Width="67" Content="DNI/CIF/NIE: " FontSize="10" VerticalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="74*"/>
+                <ColumnDefinition Width="21*"/>
+            </Grid.ColumnDefinitions>
+            <Label Height="30" Width="95" Content="DNI/CIF/NIE: " FontSize="16"  FontFamily="Candara" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="{DynamicResource Color3}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
         </Grid>
         <Grid x:Name="tipo" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
             <ComboBox Name="cbTipo" Margin="10,0,-10,0" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="24" Width="350">
@@ -39,11 +57,18 @@
 
         </Grid>
         <Grid x:Name="dni" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBox x:Name="tbDni" Height="24" Width="350" Margin="10,0,-10,0"  />
+            <TextBox x:Name="tbDni" Height="24" Width="350" Margin="10,0,-10,0" FontFamily="Calibri" FontSize="20" Background="White"/>
         </Grid>
         <Grid x:Name="Entrar" Grid.Row="4" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <Button x:Name="EntrarButton" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black" Click="OnClic_Enviar">
-                <TextBlock Height="40" Width="200" Text="ENVIAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+                <TextBlock Height="40" Width="200" Text="ENVIAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"  FontFamily="Candara" Padding="67,8,10,5" FontWeight="Bold">
+                    <TextBlock.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="{DynamicResource Color5}" Offset="0.25"/>
+                            <GradientStop Color="#FFCA99A5" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                </TextBlock>
             </Button>
         </Grid>
     </Grid>

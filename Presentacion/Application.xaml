@@ -8,6 +8,9 @@
 
         <Color x:Key="Color1">#FFCA99A5</Color>
         <Color x:Key="Color2">#FFFFD8E2</Color>
+        <Color x:Key="Color3">#FFC9C8C8</Color>
+        <Color x:Key="Color4">#FFFDFDFD</Color>
+        <Color x:Key="Color5">#FFFDE7ED</Color>
 
     </Application.Resources>
 </Application>
