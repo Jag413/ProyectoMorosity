@@ -24,10 +24,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid x:Name="texto" Grid.Column="0">
-                <TextBlock Text="Peticion" Height="40" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,0" FontFamily="Times new roman" FontWeight="Bold"/>
+                <TextBlock Text="Petición:" Height="40" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="0,8,10,0" FontFamily="Candara" FontWeight="Bold"/>
             </Grid>
             <Grid x:Name="TextoBuscador" Grid.Column="1">
-                <TextBox x:Name="TextBuscador" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Times new roman" Margin="0,0,20,0" />
+                <TextBox x:Name="TextBuscador" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Calibri" Margin="0,0,20,0" />
             </Grid>
             <Grid x:Name="Okey" Grid.Column="2">
                 <Button x:Name="BotonBuscar" Height="30" Width="30" HorizontalAlignment="Left" Click="OnClick_Buscar" Background="Transparent" BorderBrush="Transparent">
@@ -45,20 +45,21 @@
                 <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="0"/>
                 <Border BorderThickness="2" BorderBrush="Black" Grid.Column="1"/>
                 <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="1"/>
-                <TextBlock x:Name="TxblocInfoPeticionesTitulo" Text="PETICIONES" Margin="20,0,20,0" FontFamily="Times new roman" FontSize="20" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-                <TextBlock x:Name="TxblocInfoEstadoTitulo" Text="ESTADO" Margin="20,0,20,0" FontFamily="Times new roman" FontSize="20" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+                <TextBlock x:Name="TxblocInfoPeticionesTitulo" Text="PETICIONES" Margin="20,0,20,0" FontFamily="Candara" FontSize="20" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+                <TextBlock x:Name="TxblocInfoEstadoTitulo" Text="ESTADO" Margin="20,0,20,0" FontFamily="Candara" FontSize="20" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
             </Grid>
         </Grid>
         <Grid x:Name="cuerpo" Grid.Row="3">
             <Grid x:Name="styleCuerpo" Margin="10,0,10,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="242*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="293*"/>
                 </Grid.ColumnDefinitions>
-                <Border BorderThickness="2" BorderBrush="Black"  Grid.Column="0"/>
-                <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="0"/>
-                <Border BorderThickness="2" BorderBrush="Black" Grid.Column="1"/>
-                <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="1"/>
+                <Border BorderThickness="2" BorderBrush="Black"  Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Border BorderThickness="2" BorderBrush="Black" Grid.Column="2"/>
+                <Border BorderThickness="1,0,1,1" BorderBrush="Black" Grid.Column="2"/>
             </Grid>
         </Grid>
         <Grid x:Name="ultimoGrid" Grid.Row="4">
@@ -67,11 +68,25 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="ButtonAniadirPeticion" Grid.Column="0" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirPeticion" Margin="160,82,0,78" >
-                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVA PETICION" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+                <Button Name="ButtonAniadirPeticion" Grid.Column="0" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirPeticion" Margin="160,82,0,68" >
+                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVA PETICION" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="40,12,10,5" FontFamily="Candara" FontWeight="Bold">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FFFFD8E2"/>
+                                <GradientStop Color="#FFCA99A5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
                 </Button>
-                <Button Name="ButtonAniadirCliente" Grid.Column="1" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirCliente" Margin="160,82,0,78" >
-                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVO CLIENTE" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="20,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+                <Button Name="ButtonAniadirCliente" Grid.Column="1" Height="50" Width="300" Background="AliceBlue" BorderBrush="Black" HorizontalAlignment="Left" Click="OnClic_AniadirCliente" Margin="160,82,0,68" >
+                    <TextBlock Height="50" Width="300" Text="AÑADIR NUEVO CLIENTE" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="40,12,10,5" FontFamily="Candara" FontWeight="Bold">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FFFFD8E2"/>
+                                <GradientStop Color="#FFCA99A5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
                 </Button>
             </Grid>
 
