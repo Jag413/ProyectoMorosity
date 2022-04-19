@@ -39,8 +39,15 @@
             <TextBox x:Name="tbContrasena" Height="24" Width="350" Margin="10,0,-10,0"  />
         </Grid>
         <Grid x:Name="Entrar" Grid.Row="4" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Button x:Name="EntrarButton" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black" Click="OnClic_Principal">
-                <TextBlock Height="40" Width="200" Text="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,5" FontFamily="Times new roman" FontWeight="Bold" />
+            <Button x:Name="EntrarButton" Height="40" Width="200" Background="#ca99a5" BorderBrush="#a5aed8" Click="OnClic_Principal">
+                <TextBlock Height="40" Width="200" Text="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,5" FontFamily="Times new roman" FontWeight="Bold" >
+                    <TextBlock.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFFD8E2"/>
+                            <GradientStop Color="#FFCA99A5" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                </TextBlock>
             </Button>
         </Grid>
 

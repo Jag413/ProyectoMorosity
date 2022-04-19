@@ -1,6 +1,5 @@
 ﻿Imports System
 Imports System.Windows
-Imports System.Windows.Threading
 
 Public Class Inicio
     Dim peticiones As New Peticiones
