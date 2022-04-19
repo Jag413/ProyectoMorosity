@@ -1,4 +1,4 @@
-﻿<Window x:Uid="Window_1" x:Class="Inicio"
+﻿<Window  x:Class="Inicio"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,7 +16,8 @@
     <Grid x:Name="MainGridFondo">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="531*"/>
+            <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,19 +27,19 @@
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="ImgUsu" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Grid x:Name="ImgUsu" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,13">
             <Image Name="usuario" ToolTip="User" Height="24" Width="24" HorizontalAlignment="Center"  Source="pack://application:,,,/Presentacion;component/Resources/usersO_24x24.png"/>
         </Grid>
-        <Grid x:Name="ImgKey" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Grid x:Name="ImgKey" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,13">
             <Image Name="key" ToolTip="User" Height="24" Width="24" HorizontalAlignment="Center"  Source="pack://application:,,,/Presentacion;component/Resources/key_OB_24x24.png"/>
         </Grid>
-        <Grid x:Name="tbUsu" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid x:Name="tbUsu" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,13">
             <TextBox x:Name="tbUsuario" Height="24" Width="350" Margin="10,0,-10,0"  />
         </Grid>
-        <Grid x:Name="tbKey" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid x:Name="tbKey" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,13">
             <TextBox x:Name="tbContrasena" Height="24" Width="350" Margin="10,0,-10,0"  />
         </Grid>
-        <Grid x:Name="Entrar" Grid.Row="4" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <Grid x:Name="Entrar" Grid.Row="4" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Margin="76,0,255.27,0">
             <Button x:Name="EntrarButton" Height="40" Width="200" Background="#ca99a5" BorderBrush="#a5aed8" Click="OnClic_Principal">
                 <TextBlock Height="40" Width="200" Text="ENTRAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="60,8,10,5" FontFamily="Times new roman" FontWeight="Bold" >
                     <TextBlock.Background>
@@ -50,8 +51,5 @@
                 </TextBlock>
             </Button>
         </Grid>
-
-
-
     </Grid>
 </Window>

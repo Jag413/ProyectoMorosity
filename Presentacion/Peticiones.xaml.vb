@@ -1,6 +1,6 @@
 ﻿Public Class Peticiones
-    Dim agregarpet As New AgregarPeticion
-    Dim agregarcli As New AgregarCliente
+
+
 
     Public Sub New()
         InitializeComponent()
@@ -15,11 +15,13 @@
     End Sub
 
     Private Sub OnClic_AniadirPeticion(sender As Object, e As RoutedEventArgs)
+        Dim agregarpet As New AgregarPeticion
         agregarpet.Show()
 
     End Sub
 
     Private Sub OnClic_AniadirCliente(sender As Object, e As RoutedEventArgs)
+        Dim agregarcli As New AgregarCliente
         agregarcli.Show()
     End Sub
 End Class
