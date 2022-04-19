@@ -4,4 +4,8 @@
         ventana.Show()
         Close()
     End Sub
+
+    Private Sub OnClick_Salir(sender As Object, e As RoutedEventArgs)
+
+    End Sub
 End Class

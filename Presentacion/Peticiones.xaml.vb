@@ -18,6 +18,9 @@
         Dim agregarpet As New AgregarPeticion
         agregarpet.Show()
 
+        Dim a As New Informacion
+        a.Show()
+
     End Sub
 
     Private Sub OnClic_AniadirCliente(sender As Object, e As RoutedEventArgs)
