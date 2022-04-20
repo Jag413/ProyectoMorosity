@@ -1,5 +1,6 @@
 ﻿Class Informacion
     Private Sub OnClick_CambiaEstado(sender As Object, e As RoutedEventArgs)
+        'Cambiar el estado al que corresponda
         Dim ventana As New Peticiones
         ventana.Show()
         Close()
@@ -7,5 +8,6 @@
 
     Private Sub OnClick_Salir(sender As Object, e As RoutedEventArgs)
 
+        Close()
     End Sub
 End Class

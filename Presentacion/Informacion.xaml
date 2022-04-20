@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
-        Icon="pack://application:,,,/Presentacion;component/Resources/M_24x23.png"
+        Icon="pack://application:,,,/Presentacion;component/Resources/M_100x98.png"
        Title="MOROSITY" Height="850" Width="1200"
         >
     <Window.Background>

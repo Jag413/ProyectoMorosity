@@ -77,6 +77,7 @@
     <Compile Include="AgregarPeticion.xaml.vb">
       <DependentUpon>AgregarPeticion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cliente.vb" />
     <Compile Include="Inicio.xaml.vb">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
@@ -177,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\M_24x23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\M_50x49.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\M_100x98.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
