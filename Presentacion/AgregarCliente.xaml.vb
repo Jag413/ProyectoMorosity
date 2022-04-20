@@ -14,7 +14,7 @@ Public Class AgregarCliente
 
     ' 
     Private Sub OnClic_Aniadir(sender As Object, e As RoutedEventArgs)
-        Dim valdni = True
+        Dim valdni = False
         Dim valnie = False
         Dim valcif = False
         If cbTipo.SelectedIndex = 0 Then
@@ -25,12 +25,25 @@ Public Class AgregarCliente
             valcif = ValidacionCIF(tbdocumento.Text)
         End If
 
-        If valdni Or valnie Or valcif Then
-            Dim mensaje As String = "Prueba"
-            Dim style As MsgBoxStyle = MsgBoxStyle.Information
-            Dim response As Integer = MsgBox(mensaje, style)
-        End If
+        If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
+            TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
+            TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
+            Dim mensaje As String = "¡Hay campos vacios!"
+            Dim titulo As String = "Morosity"
+            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+            Dim response As Integer = MsgBox(mensaje, style, titulo)
+        Else
+            If valdni Or valnie Or valcif Then
+                If ValidacionEmail(TxbloxInfoEmail.Text) Then
+                    If ComprobacionTelefono(TxbloxInfotlf.Text) Or ComprobacionMovil(TxbloxInfoMovil.Text) Then
+                        Dim mensaje As String = "todo OK!!"
+                        Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                        Dim response As Integer = MsgBox(mensaje, style)
 
+                    End If
+                End If
+            End If
+        End If
         'Añadir datos a la base de datos
 
 
@@ -40,10 +53,9 @@ Public Class AgregarCliente
     Private Sub OnClic_Cancelar(sender As Object, e As RoutedEventArgs)
         Close()
     End Sub
-    Public Function ValidacionDNI(ByVal Documento As String) As Boolean
+    Private Function ValidacionDNI(ByVal Documento As String) As Boolean
 
-        Dim validar_DNI As Regex = New Regex("/^[0-9]{8}[a-z,A-Z]{1}/i")
-        If validar_DNI.IsMatch(Documento) Then
+        If Regex.IsMatch(Documento.ToUpper(), "[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}") Then
             TxblocInfoNIF.Foreground = Brushes.Black
             Return True
         Else
@@ -53,10 +65,9 @@ Public Class AgregarCliente
 
     End Function
 
-    Public Function ValidacionNIE(ByVal Documento As String) As Boolean
+    Private Function ValidacionNIE(ByVal Documento As String) As Boolean
 
-        Dim validar_NIE As Regex = New Regex("/^ [XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]$/i")
-        If validar_NIE.IsMatch(Documento) Then
+        If Regex.IsMatch(Documento.ToUpper(), "[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]{1}") Then
             TxblocInfoNIF.Foreground = Brushes.Black
             Return True
         Else
@@ -66,10 +77,9 @@ Public Class AgregarCliente
 
     End Function
 
-    Public Function ValidacionCIF(ByVal Documento As String) As Boolean
+    Private Function ValidacionCIF(ByVal Documento As String) As Boolean
 
-        Dim validar_CIF As Regex = New Regex("/^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/")
-        If validar_CIF.IsMatch(Documento) Then
+        If Regex.IsMatch(Documento.ToUpper(), "[ABCDEFGHJKLMNPQRSUVW]{1}[0-9]{8}") Then
             TxblocInfoNIF.Foreground = Brushes.Black
             Return True
         Else
@@ -78,4 +88,38 @@ Public Class AgregarCliente
         End If
 
     End Function
+
+    Private Function ValidacionEmail(ByVal Email As String) As Boolean
+
+        If Regex.IsMatch(Email, "[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4}") Then
+            TxbloxInfoEmail.Foreground = Brushes.Black
+            Return True
+        Else
+            TxbloxInfoEmail.Foreground = Brushes.Red
+            Return False
+        End If
+    End Function
+
+    Private Function ComprobacionTelefono(ByVal tlf As String) As Boolean
+
+        If Regex.IsMatch(tlf, "[0-9]{9}") Then
+            TxbloxInfotlf.Foreground = Brushes.Black
+            Return True
+        Else
+            TxbloxInfotlf.Foreground = Brushes.Red
+            Return False
+        End If
+    End Function
+
+    Private Function ComprobacionMovil(ByVal tlfM As String) As Boolean
+
+        If Regex.IsMatch(tlfM, "[0-9]{9}") Then
+            TxbloxInfoMovil.Foreground = Brushes.Black
+            Return True
+        Else
+            TxbloxInfoMovil.Foreground = Brushes.Red
+            Return False
+        End If
+    End Function
+
 End Class

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
         Icon="pack://application:,,,/Presentacion;component/Resources/M_100x98.png"
-        Title="MOROSITY" Height="850" Width="1200" MinWidth="800" MinHeight="600">
+        Title="MOROSITY" Height="850" Width="1200" MinWidth="800" MinHeight="600" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="White" Offset="0"/>

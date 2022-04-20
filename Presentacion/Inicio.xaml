@@ -8,17 +8,13 @@
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml" 
         mc:Ignorable="d"
         Icon="pack://application:,,,/Presentacion;component/Resources/M_100x98.png"
-        Title="MOROSITY" Height="450" Width="800">
+        Title="MOROSITY" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="White" Offset="0"/>
             <GradientStop Color="#FFBBC8CD" Offset="0.566"/>
         </LinearGradientBrush>
     </Window.Background>
-
-    <!-- <Window.Background>
-        <ImageBrush ImageSource="Resources/images.png"/>
-    </Window.Background> -->
 
     <Grid x:Name="MainGridFondo">
         <Grid.ColumnDefinitions>

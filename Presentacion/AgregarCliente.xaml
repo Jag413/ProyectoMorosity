@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Icon="pack://application:,,,/Presentacion;component/Resources/M_100x98.png"
         
-        Title="MOROSITY" Height="550" Width="1200" MinHeight="550" MinWidth="1200" >
+        Title="MOROSITY" Height="550" Width="1200" MinHeight="550" MinWidth="1200" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="White" Offset="0"/>
@@ -17,9 +17,10 @@
     </Window.Background>
     <Grid x:Name="GridInfoFondo">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="398*"/>
+            <ColumnDefinition Width="317*"/>
+            <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -30,7 +31,7 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
-        <Grid x:Name="GridInfoTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid x:Name="GridInfoTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1003*"/>
                 <ColumnDefinition Width="190*"/>
@@ -49,7 +50,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoNIF" Grid.Column="0" Text="NIF/NIE/CIF: " TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,0,0" Padding="40, 0, 10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoNIF" Grid.Column="0" Text="NIF/NIE/CIF:* " TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,0,0" Padding="40, 0, 10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -78,7 +79,7 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBlock x:Name="TxblocInfoRazonsocial" Grid.Column="0" Text="Razón Social:" VerticalAlignment="Stretch" TextAlignment="Right" Padding="0,0,10,0" FontFamily="Candara" FontSize="20" Height="20" Margin="0,14,10,0">
+            <TextBlock x:Name="TxblocInfoRazonsocial" Grid.Column="0" Text="Razón Social:*" VerticalAlignment="Stretch" TextAlignment="Right" Padding="0,0,10,0" FontFamily="Candara" FontSize="20" Height="20" Margin="0,14,10,0">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFE6E5E5"/>
@@ -91,12 +92,12 @@
             <TextBox x:Name="TxboxInfoNombre" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Calibri" Margin="0,0,20,0" Background="White"/>
         </Grid>
 
-        <Grid x:Name="GridInfoApellidos" Grid.Row="1" Grid.Column="2" >
+        <Grid x:Name="GridInfoApellidos" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoApellidos" Grid.Column="0" Text="Apellidos:" TextAlignment="Right"  VerticalAlignment="Center" Padding="0, 0, 10, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoApellidos" Grid.Column="0" Text="Apellidos:*" TextAlignment="Right"  VerticalAlignment="Center" Padding="0, 0, 10, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -128,7 +129,7 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoMovil" Grid.Column="0" Text="Movil:" VerticalAlignment="Center" Padding="30, 0, 0, 0" Margin="0,0,20,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoMovil" Grid.Column="0" Text="Movil:*" VerticalAlignment="Center" Padding="30, 0, 0, 0" Margin="0,0,20,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -139,12 +140,12 @@
             <TextBox x:Name="TxbloxInfoMovil" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="calibri" Margin="0,0,20,0" Background="White"/>
         </Grid>
 
-        <Grid x:Name="GridInfoFechaNac" Grid.Row="2" Grid.Column="2" >
+        <Grid x:Name="GridInfoFechaNac" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoFechaNac" Grid.Column="0" Text="Fecha nacimiento:" VerticalAlignment="Center" Padding="10, 0, 0, 0" Margin="0,0,0,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoFechaNac" Grid.Column="0" Text="Fecha nacimiento:*" VerticalAlignment="Center" Padding="5, 0, 0, 0" Margin="0,0,0,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -159,10 +160,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="55"/>
                 <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoDireccion" Grid.Column="0" Text="Direccion:"  TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,10,0" Padding="30, 0, 10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoDireccion" Grid.Column="0" Text="Direccion:*"  TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,10,0" Padding="20, 0, 10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -171,7 +172,7 @@
                 </TextBlock.Background>
             </TextBlock>
             <TextBox x:Name="TxbloxInfoDireccion" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Calibri" Margin="0,0,20,0" Background="White"/>
-            <TextBlock x:Name="TxblocInfoCP" Grid.Column="2" Text="CP:" VerticalAlignment="Center" Padding="10, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoCP" Grid.Column="2" Text="CP:*" VerticalAlignment="Center" Padding="5, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -182,12 +183,12 @@
             <TextBox x:Name="TxbloxInfoCP" Grid.Column="3" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Calibri" Margin="0,0,20,0" Background="White"/>
         </Grid>
 
-        <Grid x:Name="GridInfoCiudad" Grid.Row="3" Grid.Column="2" >
+        <Grid x:Name="GridInfoCiudad" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoCiudad" Grid.Column="0" Text="Ciudad:" VerticalAlignment="Center" Padding="20, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoCiudad" Grid.Column="0" Text="Ciudad:*" VerticalAlignment="Center" Padding="10, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -200,10 +201,10 @@
 
         <Grid x:Name="GridInfoProvincia" Grid.Row="4" Grid.Column="0" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="140"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoProvincia" Grid.Column="0" Text="Ciudad:"  TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,10,0" Padding="20, 0, 10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoProvincia" Grid.Column="0" Text="Provincia:*"  TextAlignment="Right" VerticalAlignment="Center" Margin="20,0,10,0" Padding="0, 0, 10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -219,7 +220,7 @@
                 <ColumnDefinition Width="140"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoNacionalidad" Grid.Column="0" Text="Nacionalidad:" VerticalAlignment="Center" Padding="10, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoNacionalidad" Grid.Column="0" Text="Nacionalidad:*" VerticalAlignment="Center" Padding="5, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -230,12 +231,12 @@
             <TextBox x:Name="TxbloxInfoNacionalidad" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="Calibri" Margin="0,0,20,0" Background="White"/>
         </Grid>
 
-        <Grid x:Name="GridInfoEmail" Grid.Row="4" Grid.Column="2" >
+        <Grid x:Name="GridInfoEmail" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TxblocInfoEmail" Grid.Column="0" Text="Email:" VerticalAlignment="Center" Padding="15, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
+            <TextBlock x:Name="TxblocInfoEmail" Grid.Column="0" Text="Email:*" VerticalAlignment="Center" Padding="5, 0, 0, 0" Margin="0,0,10,0" FontFamily="Candara" FontSize="20">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -246,7 +247,7 @@
             <TextBox x:Name="TxbloxInfoEmail" Grid.Column="1" VerticalAlignment="Center" Text="" FontSize="20" FontFamily="calibri" Margin="0,0,20,0" Background="White"/>
         </Grid>
 
-        <Grid x:Name="Aniadir" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid x:Name="Aniadir" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
