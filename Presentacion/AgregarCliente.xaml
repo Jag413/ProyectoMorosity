@@ -5,7 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
+        Icon="pack://application:,,,/Presentacion;component/Resources/M_24x23.png"
         Title="MOROSITY" Height="550" Width="1200" MinHeight="550" MinWidth="1200">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#FFBBC8CD" Offset="0.566"/>
+            <GradientStop Color="#FFF6F7F8" Offset="0.117"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid x:Name="GridInfoFondo">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,11 +30,15 @@
 
         </Grid.RowDefinitions>
         <Grid x:Name="GridInfoTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <TextBlock Name="TextBlockTitulo" Text="NUEVO CLIENTE" FontSize="28" FontWeight="Bold" FontFamily="Candara" Grid.ColumnSpan="3" Width="500" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1003*"/>
+                <ColumnDefinition Width="190*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="TextBlockTitulo" Text="NUEVO CLIENTE" FontSize="28" FontWeight="Bold" FontFamily="Candara" Width="500" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="346,23,156.5,22" >
                 <TextBlock.Background>
                     <RadialGradientBrush>
-                        <GradientStop Color="{DynamicResource Color4}" Offset="0.713"/>
-                        <GradientStop Color="{DynamicResource Color2}" Offset="1"/>
+                        <GradientStop Color="#FFF6F7F8" Offset="1"/>
+                        <GradientStop Color="{DynamicResource Color2}" Offset="0.664"/>
                     </RadialGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
@@ -237,7 +249,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="AñadirButton" Grid.Column="0" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Aniadir">
+            <Button x:Name="AñadirButton" Grid.Column="0" Height="40" Width="200" BorderBrush="#a5aed8"  HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Aniadir">
                 <TextBlock Height="40" Width="200" Text="AÑADIR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="65,8,10,5" FontFamily="Candara" FontWeight="Bold">
                     <TextBlock.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -247,7 +259,7 @@
                     </TextBlock.Background>
                 </TextBlock>
             </Button>
-            <Button x:Name="CancelarButton" Grid.Column="1" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Cancelar">
+            <Button x:Name="CancelarButton" Grid.Column="1" Height="40" Width="200" BorderBrush="#a5aed8" HorizontalAlignment="Center" VerticalAlignment="Center"  Click="OnClic_Cancelar">
                 <TextBlock Height="40" Width="200" Text="CANCELAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="55,8,10,5" FontFamily="Candara" FontWeight="Bold">
                     <TextBlock.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">

@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
+        Icon="pack://application:,,,/Presentacion;component/Resources/M_24x23.png"
         Title="MOROSITY" Height="350" Width="600">
 
-    <!-- <Window.Background>
-        <ImageBrush ImageSource="Resources/images.png"/>
-    </Window.Background> -->
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#FFBBC8CD" Offset="0.566"/>
+        </LinearGradientBrush>
+    </Window.Background>
 
     <Grid x:Name="MainGridFondo">
         <Grid.ColumnDefinitions>
@@ -60,7 +64,7 @@
             <TextBox x:Name="tbDni" Height="24" Width="350" Margin="10,0,-10,0" FontFamily="Calibri" FontSize="20" Background="White"/>
         </Grid>
         <Grid x:Name="Entrar" Grid.Row="4" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Button x:Name="EntrarButton" Height="40" Width="200" Background="AliceBlue" BorderBrush="Black" Click="OnClic_Enviar">
+            <Button x:Name="EntrarButton" Height="40" Width="200" BorderBrush="#a5aed8" Click="OnClic_Enviar">
                 <TextBlock Height="40" Width="200" Text="ENVIAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"  FontFamily="Candara" Padding="67,8,10,5" FontWeight="Bold">
                     <TextBlock.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">

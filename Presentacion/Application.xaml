@@ -11,6 +11,8 @@
         <Color x:Key="Color3">#FFC9C8C8</Color>
         <Color x:Key="Color4">#FFFDFDFD</Color>
         <Color x:Key="Color5">#FFFDE7ED</Color>
+        <Color x:Key="Color6">#FF333A3C</Color>
+        <Color x:Key="Color7">#FFBBC8CD</Color>
 
     </Application.Resources>
 </Application>

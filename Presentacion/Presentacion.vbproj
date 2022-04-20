@@ -169,5 +169,14 @@
     <Resource Include="Resources\lupa_16x16.png" />
     <Resource Include="Resources\usersO_24x24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\M_24x23.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentacion"
         mc:Ignorable="d"
+        Icon="pack://application:,,,/Presentacion;component/Resources/M_24x23.png"
        Title="MOROSITY" Height="850" Width="1200"
         >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="{DynamicResource Color7}" Offset="0.566"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid x:Name="GridInfoFondo">
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="ColumnInfo1" Width="*"/>
@@ -22,11 +29,15 @@
 
         </Grid.RowDefinitions>
         <Grid x:Name="GridInfoTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <TextBlock Name="TextBlockTitulo" Text="INFORMACIÓN DEL CLIENTE" FontSize="28" FontWeight="Bold" FontFamily="Candara" Width="600" TextAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="517*"/>
+                <ColumnDefinition Width="79*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="TextBlockTitulo" Text="INFORMACIÓN DEL CLIENTE" FontSize="28" FontWeight="Bold" FontFamily="Candara" Width="600" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="296,13,138,12">
                 <TextBlock.Background>
                     <RadialGradientBrush>
-                        <GradientStop Color="{DynamicResource Color4}" Offset="0.713"/>
-                        <GradientStop Color="{DynamicResource Color2}" Offset="1"/>
+                        <GradientStop Color="#FFF6F7F8" Offset="1"/>
+                        <GradientStop Color="{DynamicResource Color2}" Offset="0.664"/>
                     </RadialGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
@@ -101,7 +112,7 @@
             <TextBlock x:Name="TxblocInfoRazonesTitulo" Text="RAZONES" Margin="80,0,20,0" FontFamily="Candara" FontSize="20" Grid.Row="0" VerticalAlignment="Center" FontWeight="Black"/>
             <TextBlock x:Name="TxblocInfoRazones" Text="" FontFamily="Candara" FontSize="20" Grid.Row="1" />
         </Grid>
-        <Button x:Name="BtnInfoCambiarEstado" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="50" Click="OnClick_CambiaEstado">
+        <Button x:Name="BtnInfoCambiarEstado" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="50" BorderBrush="#a5aed8" Click="OnClick_CambiaEstado">
             <TextBlock Text="CAMBIAR ESTADO" FontSize="20" FontFamily="Candara" FontWeight="Black" Height="50" Width="200" Padding="20,12,10,5">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -112,8 +123,8 @@
             </TextBlock>
         </Button>
         <!--MOSTRAR EN LA SEGUNDA COLUMNA DE LA ÚLTIMA FILA UN LOGO O IMAGEN-->
-        
-        <Button x:Name="BtnInfoSalir" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="50" Click="OnClick_Salir">
+
+        <Button x:Name="BtnInfoSalir" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="50" BorderBrush="#a5aed8" Click="OnClick_Salir">
             <TextBlock Text="SALIR" FontSize="20" FontFamily="Candara" FontWeight="Black" Height="50" Width="200" Padding="75,12,10,5">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
