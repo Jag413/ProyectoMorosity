@@ -2,17 +2,6 @@
 
 Public Class AgregarCliente
 
-    Public Sub Seleccion()
-        If cbTipo.SelectedIndex = 2 Then
-            TxbloxInfoApellidos.IsEnabled = False
-            dpFecha.IsEnabled = False
-        Else
-            TxbloxInfoApellidos.IsEnabled = True
-            dpFecha.IsEnabled = True
-        End If
-    End Sub
-
-    ' 
     Private Sub OnClic_Aniadir(sender As Object, e As RoutedEventArgs)
         Dim valdni = False
         Dim valnie = False
@@ -30,29 +19,58 @@ Public Class AgregarCliente
             TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
             Dim mensaje As String = "¡Hay campos vacios!"
             Dim titulo As String = "Morosity"
-            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+            Dim style As MsgBoxStyle = MsgBoxStyle.Information
             Dim response As Integer = MsgBox(mensaje, style, titulo)
         Else
             If valdni Or valnie Or valcif Then
                 If ValidacionEmail(TxbloxInfoEmail.Text) Then
                     If ComprobacionTelefono(TxbloxInfotlf.Text) Or ComprobacionMovil(TxbloxInfoMovil.Text) Then
-                        Dim mensaje As String = "todo OK!!"
+                        Dim mensaje As String = "¡Cliente Añadido!"
                         Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
                         Dim response As Integer = MsgBox(mensaje, style)
-
+                        limpiar()
                     End If
                 End If
             End If
         End If
+
         'Añadir datos a la base de datos
-
-
 
     End Sub
 
     Private Sub OnClic_Cancelar(sender As Object, e As RoutedEventArgs)
         Close()
     End Sub
+
+    Private Sub limpiar()
+        tbdocumento.Clear()
+        TxblocInfoNIF.Foreground = Brushes.Black
+        TxboxInfoNombre.Clear()
+        TxbloxInfoApellidos.Clear()
+        TxbloxInfotlf.Clear()
+        TxbloxInfotlf.Foreground = Brushes.Black
+        TxbloxInfoMovil.Clear()
+        TxbloxInfoMovil.Foreground = Brushes.Black
+        TxbloxInfoDireccion.Clear()
+        TxbloxInfoCP.Clear()
+        TxbloxInfoCiudad.Clear()
+        TxbloxInfoProvincia.Clear()
+        TxbloxInfoNacionalidad.Clear()
+        TxbloxInfoEmail.Clear()
+        TxbloxInfoEmail.Foreground = Brushes.Black
+        dpFecha.Text = ""
+    End Sub
+
+    Private Sub Seleccion()
+        If cbTipo.SelectedIndex = 2 Then
+            TxbloxInfoApellidos.IsEnabled = False
+            dpFecha.IsEnabled = False
+        Else
+            TxbloxInfoApellidos.IsEnabled = True
+            dpFecha.IsEnabled = True
+        End If
+    End Sub
+
     Private Function ValidacionDNI(ByVal Documento As String) As Boolean
 
         If Regex.IsMatch(Documento.ToUpper(), "[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}") Then
