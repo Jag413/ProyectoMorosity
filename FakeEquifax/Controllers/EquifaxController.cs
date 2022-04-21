@@ -12,14 +12,14 @@ namespace FakeEquifax.Controllers
     public class EquifaxController : Controller
     {
         [HttpPost]
-        public ScoringPersona GetStatusPersona (Persona PersonaParaHacerScoring)
+        public ScoringPersona GetStatusPersona(Persona PersonaParaHacerScoring)
         {
             var resultado = new ScoringPersona();
             resultado.Persona = PersonaParaHacerScoring;
             resultado.IsOk = true;
             resultado.Errores = false;
             //Ver si existe en la bd --> obtengo la persona o null 
-            if(ExistePersona(PersonaParaHacerScoring) != null)
+            if (ExistePersona(PersonaParaHacerScoring) != null)
             {
 
             }
@@ -28,14 +28,14 @@ namespace FakeEquifax.Controllers
             //retornar el scoring de dicha persona o si no existe
             return resultado;
         }
-    }
+        private Persona ExistePersona(Persona persona)
+        {
+            //consulta db
+            // si existe persona retorna persona
+            // si no retorna null
 
-    private Persona ExistePersona(Persona persona)
-    {
-        //consulta db
-        // si existe persona retorna persona
-        // si no retorna null
-        
-        return;
+            return null;
+        }
+
     }
 }

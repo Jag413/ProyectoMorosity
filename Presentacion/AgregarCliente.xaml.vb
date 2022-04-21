@@ -2,18 +2,18 @@
 Imports Serilog
 
 Public Class AgregarCliente
-    Dim logger As New LoggerConfiguration()
+    'Dim logger As New LoggerConfiguration()
 
 
-    Private Sub New()
+    Public Sub New()
 
         InitializeComponent()
 
 
-        logger.MinimumLevel.Debug()
-        logger.WriteTo.Console()
-        logger.WriteTo.File(@"C:\Users\SabrinaGP\Desktop\logSeqMorosity.log")
-        logger.CreateLogger()
+        'logger.MinimumLevel.Debug()
+        'logger.WriteTo.Console()
+        'logger.WriteTo.File(@"C:\Users\SabrinaGP\Desktop\logSeqMorosity.log")
+        'logger.CreateLogger()
 
 
     End Sub

@@ -1,7 +1,5 @@
 ﻿Public Class Peticiones
 
-
-
     Public Sub New()
         InitializeComponent()
     End Sub
