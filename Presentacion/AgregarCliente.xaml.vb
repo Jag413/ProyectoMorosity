@@ -1,8 +1,27 @@
 ﻿Imports System.Text.RegularExpressions
+Imports Serilog
 
 Public Class AgregarCliente
+    Dim logger As New LoggerConfiguration()
+
+
+    Private Sub New()
+
+        InitializeComponent()
+
+
+        logger.MinimumLevel.Debug()
+        logger.WriteTo.Console()
+        logger.WriteTo.File(@"C:\Users\SabrinaGP\Desktop\logSeqMorosity.log")
+        logger.CreateLogger()
+
+
+    End Sub
 
     Private Sub OnClic_Aniadir(sender As Object, e As RoutedEventArgs)
+
+
+
         Dim valdni = False
         Dim valnie = False
         Dim valcif = False
