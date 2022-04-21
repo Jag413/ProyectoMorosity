@@ -1,9 +1,8 @@
 ﻿Imports System
 Imports System.Windows
-Imports System.Windows.Threading
 
 Public Class Inicio
-    Dim peticiones As New Peticiones
+
 
 
     Public Sub New()
@@ -11,7 +10,10 @@ Public Class Inicio
     End Sub
 
     Private Sub OnClic_Principal(sender As Object, e As RoutedEventArgs)
+        Dim peticiones As New Peticiones
         peticiones.Show()
-        Close()
+        Me.Close()
     End Sub
+
+
 End Class
