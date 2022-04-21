@@ -25,4 +25,5 @@
         Dim agregarcli As New AgregarCliente
         agregarcli.Show()
     End Sub
+
 End Class
