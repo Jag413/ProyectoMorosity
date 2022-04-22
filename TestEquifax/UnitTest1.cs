@@ -624,7 +624,7 @@ namespace TestEquifax
     ""interactionId"": ""ID-01722210249-44509-1542220295976-0-3996"",
     ""transactionId"": 71795
 }";
-        
+      
 
 
 
@@ -644,12 +644,29 @@ namespace TestEquifax
 ""apellido"": ""PicaPiedra"",
 ""documento"": ""00000000T""
 }";
+            string hijos = @"{
+  ""nombre"": ""Pedro"",
+  ""apellido"": ""PicaPiedra"",
+  ""documento"": ""00000000T"",
+  ""hijos"": [
+    {
+        ""nombre"": ""Sabrina"",
+        ""apellido"": ""picapiedra""
+    },
+    {
+        ""nombre"": ""javier"",
+        ""apellido"": ""picapiedra""
+    }
+  ]
+}";
 
             var options = new JsonSerializerOptions { WriteIndented = true };
             string picap = JsonSerializer.Serialize<Persona>(pic, options);
+
             Persona p = JsonSerializer.Deserialize<Persona>(a);
+            Persona h = JsonSerializer.Deserialize<Persona>(hijos);
             
-            Console.WriteLine(p);
+            Console.WriteLine(h);
     }
     }
 }
