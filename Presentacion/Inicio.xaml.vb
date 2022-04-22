@@ -13,6 +13,7 @@ Public Class Inicio
 
         Dim con As String = "server=;database=;userid=;password=;port=3306;"
         conexion = New MySqlConnection(con)
+
         'Dim cadenaConexion As String = "server=192.168.1.2;database=mibasededatos;userid=root;password=holahola;port=3306;"
 
     End Sub
