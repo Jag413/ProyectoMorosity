@@ -1,6 +1,7 @@
 using FakeEquifax.Modelos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 
 
@@ -13,11 +14,11 @@ namespace TestEquifax
     ""applicants"": {
         ""primaryConsumer"": {
             ""personalInformation"": {
-                ""idType"": ""SUSTITUIR POR TIPO DE IDENTIFICACIÓN: ID / PASS"",
-                ""idCode"": ""SUSTITUIR POR IDENTIFICACIÓN"",
+                ""idType"": ""SUSTITUIR POR TIPO DE IDENTIFICACIï¿½N: ID / PASS"",
+                ""idCode"": ""SUSTITUIR POR IDENTIFICACIï¿½N"",
                 ""addresses"": [
                     {
-                    ""postalCode"": ""SUSTITUIR POR CÓDIGO POSTAL""
+                    ""postalCode"": ""SUSTITUIR POR Cï¿½DIGO POSTAL""
                     }
                 ]
             }
@@ -28,12 +29,12 @@ namespace TestEquifax
   ""applicants"": {
     ""primaryConsumer"": {
       ""personalInformation"": {
-        ""idType"": ""SUSTITUIR POR TIPO DE IDENTIFICACIÓN: ID / PASS"",
-        ""idCode"": ""SUSTITUIR POR IDENTIFICACIÓN"",
+        ""idType"": ""SUSTITUIR POR TIPO DE IDENTIFICACIï¿½N: ID / PASS"",
+        ""idCode"": ""SUSTITUIR POR IDENTIFICACIï¿½N"",
         ""dateOfBirth"": ""SUSTITUIR POR FECHA DE NACIMIENTO"",
         ""addresses"": [
           {
-            ""postalCode"": ""SUSTITUIR POR CÓDIGO POSTAL""
+            ""postalCode"": ""SUSTITUIR POR Cï¿½DIGO POSTAL""
           }
         ]
       }
@@ -45,12 +46,12 @@ namespace TestEquifax
   ""applicants"": {
     ""primaryConsumer"": {
       ""personalInformation"": {
-        ""idType"": ""ID / PASS informado en la petición"",
-        ""idCode"": ""Identificación informada en la petición"",
-        ""dateOfBirth"": ""Fecha de nacimiento informada en la petición"",
+        ""idType"": ""ID / PASS informado en la peticiï¿½n"",
+        ""idCode"": ""Identificaciï¿½n informada en la peticiï¿½n"",
+        ""dateOfBirth"": ""Fecha de nacimiento informada en la peticiï¿½n"",
         ""addresses"": [
           {
-            ""postalCode"": ""Código postal informado en la petición""
+            ""postalCode"": ""Cï¿½digo postal informado en la peticiï¿½n""
           }
         ]
       },
@@ -58,7 +59,7 @@ namespace TestEquifax
     ""EIPG"": {
         ""RISK"": {
             ""identifier"": ""primary"",
-            ""idCode"": ""Identificación informada en la petición"",
+            ""idCode"": ""Identificaciï¿½n informada en la peticiï¿½n"",
             ""returnCode"": ""000"",
             ""present"": ""00"",
             ""rating"": ""1"",
@@ -100,8 +101,8 @@ namespace TestEquifax
     ""primaryConsumer"": {
       ""personalInformation"": {
         ""idCountryCode"": ""724"",
-        ""idType"": ""ID/PASS informado en la petición"",
-        ""idCode"": ""Identificación informada en la petición"",
+        ""idType"": ""ID/PASS informado en la peticiï¿½n"",
+        ""idCode"": ""Identificaciï¿½n informada en la peticiï¿½n"",
         ""addresses"": [
           {
             ""postalCode"": ""99999""
@@ -112,7 +113,7 @@ namespace TestEquifax
     ""EIPG"": {
         ""RISK"": {
             ""identifier"": ""primary"",
-            ""idCode"": ""Identificación informada en la petición"",
+            ""idCode"": ""Identificaciï¿½n informada en la peticiï¿½n"",
             ""returnCode"": ""173"",
             ""errors"": [
               {
@@ -193,7 +194,7 @@ namespace TestEquifax
         ""primaryConsumer"": {
             ""personalInformation"": {
                 ""idType"": ""TIPO DE IDENTIFICADOR: ID / PASS"",
-                ""idCode"": ""NÚMERO DE IDENTIFICADOR""
+                ""idCode"": ""Nï¿½MERO DE IDENTIFICADOR""
             },
             ""dataSourceResponses"": {
                 ""EIPG"": {
@@ -597,7 +598,7 @@ namespace TestEquifax
         ""primaryConsumer"": {
             ""personalInformation"": {
                 ""idType"": ""TIPO DE IDENTIFICADOR: ID / PASS"",
-                ""idCode"": ""NÚMERO DE IDENTIFICADOR""
+                ""idCode"": ""Nï¿½MERO DE IDENTIFICADOR""
             },
             ""dataSourceResponses"": {
                 ""EIPG"": {
@@ -668,5 +669,534 @@ namespace TestEquifax
             
             Console.WriteLine(h);
     }
+        
+        
+        
+        
+        
+        [TestMethod]
+        public void TestMethodCreateRequest()
+        {
+
+            EquifaxRequest requestDocumento = new EquifaxRequest();
+
+            requestDocumento.Applicants = new Applicants();
+            requestDocumento.Applicants.PrimaryConsumer = new PrimaryConsumer();
+            requestDocumento.Applicants.PrimaryConsumer.PersonalInformation = new PersonalInformation();
+
+            requestDocumento.Applicants.PrimaryConsumer.PersonalInformation.Addresses = new List<Address>();
+            Address codigoPostal = new Address();
+            codigoPostal.PostalCode = "50009";
+            requestDocumento.Applicants.PrimaryConsumer.PersonalInformation.Addresses.Add(codigoPostal);
+            requestDocumento.Applicants.PrimaryConsumer.PersonalInformation.IdType = "ID";
+            requestDocumento.Applicants.PrimaryConsumer.PersonalInformation.IdCode = "23432111j";
+
+            string requestDocumentoJson;
+        
+            if (requestDocumento.IsValidToSerializeBasicEquifax())
+            {
+                requestDocumentoJson = JsonSerializer.Serialize(requestDocumento);
+            }
+        }
+      
+        [TestMethod]
+        public void TestMethodReadResponse()
+        {
+
+            EquifaxResponse myDeserializedClass = JsonSerializer.Deserialize<EquifaxResponse>(responseAsnef);
+
+            EquifaxResponse myDeserializedClassNoAsnef = JsonSerializer.Deserialize<EquifaxResponse>(responseNoAsnef);
+
+            EquifaxResponse myDeserializedClassError = JsonSerializer.Deserialize<EquifaxResponse>(responseError);
+
+        }
+        
+        
+      #region json
+
+      private string responseError = @"{
+                                            ""applicants"": {
+                                              ""primaryConsumer"": {
+                                                ""personalInformation"": {
+                                                  ""idCountryCode"": ""724"",
+                                                  ""idType"": ""ID/PASS informado en la peticiÃ³n"",
+                                                  ""idCode"": ""IdentificaciÃ³n informada en la peticiÃ³n"",
+                                                  ""addresses"": [
+                                                    {
+                                                      ""postalCode"": ""99999""
+                                                    }
+                                                  ]
+                                                },
+                                                ""dataSourceResponses"": {
+                                                  ""EIPG"": {
+                                                    ""RISK"": {
+                                                      ""identifier"": ""primary"",
+                                                      ""idCode"": ""IdentificaciÃ³n informada en la peticiÃ³n"",
+                                                      ""returnCode"": ""173"",
+                                                      ""errors"": [
+                                                        {
+                                                          ""code"": ""HOSTVALIDATION"",
+                                                          ""description"": ""RISK returnCode: 173""
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            ""timestamp"": ""2018-10-02 13:11:54:659"",
+                                            ""errors"": [
+                                              {
+                                                ""code"": ""ICDAS004"",
+                                                ""message"": ""Errors present in [EIPG] response"",
+                                                ""category"": ""C""
+                                              }
+                                            ],
+                                            ""transactionState"": ""ERROR"",
+                                            ""interactionId"": ""ID-01722210217-45691-1536166074269-0-2804"",
+                                            ""transactionId"": 41169
+                                          }";
+        private string responseNoAsnef = @"{
+                                            ""applicants"": {
+                                              ""primaryConsumer"": {
+                                                ""personalInformation"": {
+                                                  ""idType"": ""TIPO DE IDENTIFICADOR: ID / PASS"",
+                                                  ""idCode"": ""NÃšMERO DE IDENTIFICADOR""
+                                                },
+                                                ""dataSourceResponses"": {
+                                                  ""EIPG"": {
+                                                    ""ASNEFDETAIL"": {
+                                                      ""identifier"": ""primary"",
+                                                      ""idCode"": ""1R"",
+                                                      ""returnCode"": ""001"",
+                                                      ""summaryInformation"": {
+                                                        ""numberOfOperations"": 0,
+                                                        ""totalAmountOfOperations"": 0,
+                                                        ""numberOfUnpaidOperations"": 0,
+                                                        ""numberOfUnpaidPayments"": 0,
+                                                        ""totalUnpaidPaymentAmount"": 0,
+                                                        ""maximumUnpaidPaymentAmount"": 0,
+                                                        ""worstSituation"": {}
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            ""timestamp"": ""2018-12-04 09:50:09:585"",
+                                            ""transactionState"": ""COMPLETED"",
+                                            ""interactionId"": ""ID-01722210249-44509-1542220295976-0-3996"",
+                                            ""transactionId"": 71795
+                                          }";
+        
+        
+        private string responseAsnef = @"{
+                                          ""applicants"": {
+                                            ""primaryConsumer"": {
+                                              ""personalInformation"": {
+                                                ""idType"": ""TIPO DE IDENTIFICADOR: ID / PASS"",
+                                                ""idCode"": ""NÃšMERO DE IDENTIFICADOR""
+                                              },
+                                              ""dataSourceResponses"": {
+                                                ""EIPG"": {
+                                                  ""ASNEFDETAIL"": {
+                                                    ""identifier"": ""primary"",
+                                                    ""idCode"": ""????????Z"",
+                                                    ""returnCode"": ""000"",
+                                                    ""summaryInformation"": {
+                                                      ""personName"": ""XXXXX XXXXXXX CESAR"",
+                                                      ""identificationNumber"": ""????????Z"",
+                                                      ""originalCreatedDate"": ""2013-08-19 00:00:00 +0000"",
+                                                      ""mostRecentUpdateDate"": ""2014-02-23 00:00:00 +0000"",
+                                                      ""recentInquiryEntity"": ""ACCESO DENEGADO"",
+                                                      ""numberOfOperations"": 1,
+                                                      ""totalAmountOfOperations"": 21287.42,
+                                                      ""numberOfUnpaidOperations"": 1,
+                                                      ""numberOfUnpaidPayments"": 7,
+                                                      ""totalUnpaidPaymentAmount"": 4069.56,
+                                                      ""maximumUnpaidPaymentAmount"": 4069.56,
+                                                      ""maximumUnpaidPaymentDate"": ""2018-11-01 00:00:00 +0000"",
+                                                      ""worstSituation"": {
+                                                        ""code"": ""02"",
+                                                        ""description"": ""Pre-judicial""
+                                                      },
+                                                      ""worstSituationDate"": ""2018-11-01 00:00:00 +0000""
+                                                    },
+                                                    ""MonthlyCreditInformation"": [
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-12-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-11-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-10-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-09-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-08-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-07-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-06-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-05-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-04-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-03-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-02-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2018-01-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-12-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-11-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-10-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-09-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-08-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-07-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-06-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-05-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-04-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-03-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-02-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      },
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""date"": ""2017-01-01 00:00:00 +0000"",
+                                                        ""numberOfOperations"": 1,
+                                                        ""totalAmountOfOperations"": 21287.42,
+                                                        ""numberOfUnpaidOperations"": 1,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""worstSituation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        }
+                                                      }
+                                                    ],
+                                                    ""creditOperations"": [
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""operationCode"": ""41IJ1TV11G"",
+                                                        ""originalCreatedDate"": ""2013-08-19 00:00:00 +0000"",
+                                                        ""product"": {
+                                                          ""code"": ""07"",
+                                                          ""description"": ""Personal Loan""
+                                                        },
+                                                        ""nature"": {
+                                                          ""code"": ""01"",
+                                                          ""description"": ""Holder""
+                                                        },
+                                                        ""totalAmount"": 21287.42,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""entity"": ""E.F. DE MARCA""
+                                                      }
+                                                    ],
+                                                    ""specificCreditOperationsDetails"": [
+                                                      {
+                                                        ""identificationNumber"": ""????????Z"",
+                                                        ""operationCode"": ""41IJ1TV11G"",
+                                                        ""originalCreatedDate"": ""2013-08-19 00:00:00 +0000"",
+                                                        ""entityCode"": ""17"",
+                                                        ""entityName"": ""E.F. DE MARCA"",
+                                                        ""operationProduct"": {
+                                                          ""code"": ""07"",
+                                                          ""description"": ""Personal Loan""
+                                                        },
+                                                        ""nature"": {
+                                                          ""code"": ""01"",
+                                                          ""description"": ""Holder""
+                                                        },
+                                                        ""situation"": {
+                                                          ""code"": ""02"",
+                                                          ""description"": ""Pre-judicial""
+                                                        },
+                                                        ""totalAmountOfOperation"": 21287.42,
+                                                        ""operationEndDate"": ""2015-05-11 00:00:00 +0000"",
+                                                        ""numberOfPayments"": 0,
+                                                        ""totalAmountOfAllPayments"": 0,
+                                                        ""numberOfUnpaidPayments"": 7,
+                                                        ""totalUnpaidPaymentAmount"": 4069.56,
+                                                        ""totalOutstandingBalance"": 0,
+                                                        ""firstUnpaidPaymentDueDate"": ""2013-08-12 00:00:00 +0000"",
+                                                        ""lastUnpaidPaymentDueDate"": ""2014-02-11 00:00:00 +0000""
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          ""timestamp"": ""2018-12-04 09:52:31:822"",
+                                          ""transactionState"": ""COMPLETED"",
+                                          ""interactionId"": ""ID-01722210249-44509-1542220295976-0-3997"",
+                                          ""transactionId"": 71796
+                                        }";
+
+      #endregion
+      
+
     }
 }

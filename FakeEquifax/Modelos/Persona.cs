@@ -22,7 +22,8 @@ namespace FakeEquifax.Modelos
         public Applicants Applicants { get; set; }
 
     }
-
+    
+    /*
     public class Applicants
     {
         [JsonPropertyName("primaryConsumer")]
@@ -45,4 +46,5 @@ namespace FakeEquifax.Modelos
 
 
     }
+    */
 }
