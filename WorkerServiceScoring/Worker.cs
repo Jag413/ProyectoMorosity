@@ -13,6 +13,7 @@ namespace WorkerServiceScoring
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            //prueba rabit
             _logger.LogInformation($"Worker secrets RabbitUser: {_configuration["RabbitUser"]}");
             while (!stoppingToken.IsCancellationRequested)
             {
