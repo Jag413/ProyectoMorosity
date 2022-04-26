@@ -42,5 +42,10 @@ public class RabbitManager : IRabbitManager
         {  
             _objectPool.Return(channel);                  
         }  
-    }  
+    }
+
+    /*public void Consumir<T>(string queueName) where T : class
+    {
+        throw new NotImplementedException();
+    }*/
 }  

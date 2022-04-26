@@ -289,6 +289,9 @@ namespace ClassLibraryModelos.ModelosEquifax
     {
         private string _idType;
         private string _idCode;
+        
+        [JsonPropertyName("idCountryCode")]
+        public string IdCountryCode { get; set; }
 
         [JsonPropertyName("idType")]
         public string IdType

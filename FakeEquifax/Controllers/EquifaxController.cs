@@ -23,24 +23,13 @@ namespace FakeEquifax.Controllers
         
         private IRabbitManager _manager;  
   
-        
         public EquifaxController(IRabbitManager manager)
         {
-           _manager = manager;  
-                /*_factoriaRabbitConexion = new ConnectionFactory()
-                {
-                    HostName = "localhost",
-                    UserName = "guest",
-                    Password = "guest",
-                    VirtualHost = "/",
-                    Port = AmqpTcpEndpoint.UseDefaultPort
-                };
-
-                _conexionRabbit = _factoriaRabbitConexion.CreateConnection();
-                _channel = _conexionRabbit.CreateModel();*/
+            _manager = manager;
         }
-        
-        
+
+
+       
         /*[HttpPost]
         public ScoringPersona GetStatusPersona(Persona PersonaParaHacerScoring)
         {
@@ -69,36 +58,30 @@ namespace FakeEquifax.Controllers
         */
         
         [HttpPost]
-        
-        public ActionResult EnviaClienteScoring(int clienteId)
+        public ActionResult EnviaClienteScoring(PersonaScoringBase cliente)
         {
             //_channel.ConfirmSelect();
-            
-            var sendBytes = Encoding.UTF8.GetBytes( System.Text.Json.JsonSerializer.Serialize(clienteId));
+            /*int a = 0;
 
-
+            a = 2 / a;*/
             try
             {
-                
-                
-               
-
                 // publicar mensaje  
-                _manager.Publicar(new
-                {
-                    clienteid = clienteId
-                }, "exchange.scoring.dev", "direct", "");
-
-
-
+                _manager.Publicar(cliente, "exchange.scoring.dev", "direct", String.Empty);
             }
             catch(Exception ex)
             {
                 
             }
 
-            return null;
+            return Ok(cliente);
         }
 
+    }
+
+
+    public class PersonaScoringBase
+    {
+        public int ClienteId { get; set; }
     }
 }

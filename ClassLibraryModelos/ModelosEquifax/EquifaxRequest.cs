@@ -17,7 +17,8 @@ namespace ClassLibraryModelos.ModelosEquifax
         {
             return IsValidToSerializeBasicEquifax() &&
                    Applicants.PrimaryConsumer.PersonalInformation.Addresses != null &&
-                   Applicants.PrimaryConsumer.PersonalInformation.Addresses.Count > 0;
+                   Applicants.PrimaryConsumer.PersonalInformation.Addresses.Count > 0
+                   && Applicants.PrimaryConsumer.PersonalInformation.IdCountryCode != String.Empty;
         }
     }
 }
