@@ -2,8 +2,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Presentacion"
-    StartupUri="MainWindow.xaml">
+    StartupUri="Inicio.xaml"
+    ShutdownMode="OnLastWindowClose">
     <Application.Resources>
-        
+
+        <Color x:Key="Color1">#FFCA99A5</Color>
+        <Color x:Key="Color2">#FFFFD8E2</Color>
+        <Color x:Key="Color3">#FFC9C8C8</Color>
+        <Color x:Key="Color4">#FFFDFDFD</Color>
+        <Color x:Key="Color5">#FFFDE7ED</Color>
+        <Color x:Key="Color6">#FF333A3C</Color>
+        <Color x:Key="Color7">#FFBBC8CD</Color>
+
     </Application.Resources>
 </Application>
