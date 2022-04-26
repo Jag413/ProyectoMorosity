@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace FakeEquifax.Modelos
+namespace ClassLibraryModelos.ModelosEquifax
 {
     //TODO En cuanto definamos clases, separarlas en fichero - clase
     

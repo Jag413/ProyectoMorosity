@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEquifax", "TestEquifax\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerServiceScoring", "WorkerServiceScoring\WorkerServiceScoring.csproj", "{200137A2-1E60-4CC8-8A4A-884E369C1720}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryRabbit", "ClassLibraryRabbit\ClassLibraryRabbit.csproj", "{A1249BBE-E629-4A15-AE9B-D6C0EDFCAFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryModelos", "ClassLibraryModelos\ClassLibraryModelos.csproj", "{C95250EB-0729-469A-B873-375917A6166E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{200137A2-1E60-4CC8-8A4A-884E369C1720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{200137A2-1E60-4CC8-8A4A-884E369C1720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{200137A2-1E60-4CC8-8A4A-884E369C1720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1249BBE-E629-4A15-AE9B-D6C0EDFCAFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1249BBE-E629-4A15-AE9B-D6C0EDFCAFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1249BBE-E629-4A15-AE9B-D6C0EDFCAFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1249BBE-E629-4A15-AE9B-D6C0EDFCAFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C95250EB-0729-469A-B873-375917A6166E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C95250EB-0729-469A-B873-375917A6166E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C95250EB-0729-469A-B873-375917A6166E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C95250EB-0729-469A-B873-375917A6166E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

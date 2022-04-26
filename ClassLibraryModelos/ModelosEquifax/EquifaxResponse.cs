@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace FakeEquifax.Modelos
+namespace ClassLibraryModelos.ModelosEquifax
 {
     public class EquifaxResponse
     {

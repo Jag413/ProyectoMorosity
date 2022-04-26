@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace FakeEquifax.Modelos
+namespace ClassLibraryModelos.ModelosEquifax
 {
     public class EquifaxRequest
     {
