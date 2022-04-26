@@ -3,7 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using ClassLibraryRabbit;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using RabbitMQ.Client;
 
 namespace FakeEquifax.Controllers
 {
@@ -11,15 +16,29 @@ namespace FakeEquifax.Controllers
     [Route("[controller]/GetDatta")]
     public class EquifaxController : Controller
     {
-        [HttpPost]
-        public ScoringPersona GetStatusPersona (Persona PersonaParaHacerScoring)
+        private ConnectionFactory _factoriaRabbitConexion;
+        private readonly IConnection _conexionRabbit;
+        private readonly IModel _channel;
+
+        
+        private IRabbitManager _manager;  
+  
+        public EquifaxController(IRabbitManager manager)
+        {
+            _manager = manager;
+        }
+
+
+       
+        /*[HttpPost]
+        public ScoringPersona GetStatusPersona(Persona PersonaParaHacerScoring)
         {
             var resultado = new ScoringPersona();
             resultado.Persona = PersonaParaHacerScoring;
             resultado.IsOk = true;
             resultado.Errores = false;
             //Ver si existe en la bd --> obtengo la persona o null 
-            if(ExistePersona(PersonaParaHacerScoring) != null)
+            if (ExistePersona(PersonaParaHacerScoring) != null)
             {
 
             }
@@ -28,14 +47,41 @@ namespace FakeEquifax.Controllers
             //retornar el scoring de dicha persona o si no existe
             return resultado;
         }
+        private Persona ExistePersona(Persona persona)
+        {
+            //consulta db
+            // si existe persona retorna persona
+            // si no retorna null
+
+            return null;
+        }
+        */
+        
+        [HttpPost]
+        public ActionResult EnviaClienteScoring(PersonaScoringBase cliente)
+        {
+            //_channel.ConfirmSelect();
+            /*int a = 0;
+
+            a = 2 / a;*/
+            try
+            {
+                // publicar mensaje  
+                _manager.Publicar(cliente, "exchange.scoring.dev", "direct", String.Empty);
+            }
+            catch(Exception ex)
+            {
+                
+            }
+
+            return Ok(cliente);
+        }
+
     }
 
-    private Persona ExistePersona(Persona persona)
+
+    public class PersonaScoringBase
     {
-        //consulta db
-        // si existe persona retorna persona
-        // si no retorna null
-        
-        return;
+        public int ClienteId { get; set; }
     }
 }
