@@ -20,11 +20,11 @@ Public Class AgregarCliente
         Dim valnie = False
         Dim valcif = False
         If cbTipo.SelectedIndex = 0 Then
-            valdni = ValidacionDNI(tbdocumento.Text)
+            valdni = Helper.ValidacionDNI(tbdocumento.Text)
         ElseIf cbTipo.SelectedIndex = 1 Then
-            valnie = ValidacionNIE(tbdocumento.Text)
+            valnie = Helper.ValidacionNIE(tbdocumento.Text)
         ElseIf cbTipo.SelectedIndex = 2 Then
-            valcif = ValidacionCIF(tbdocumento.Text)
+            valcif = Helper.ValidacionCIF(tbdocumento.Text)
         End If
 
         If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
@@ -37,15 +37,29 @@ Public Class AgregarCliente
             Dim response As Integer = MsgBox(mensaje, style, titulo)
         Else
             If valdni Or valnie Or valcif Then
-                If ValidacionEmail(TxbloxInfoEmail.Text) Then
-                    If ComprobacionTelefono(TxbloxInfotlf.Text) Or ComprobacionMovil(TxbloxInfoMovil.Text) Then
-                        Log.Information("Cliente añadido con exito.")
-                        Dim mensaje As String = "¡Cliente Añadido!"
-                        Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-                        Dim response As Integer = MsgBox(mensaje, style)
-                        limpiar()
+                TxblocInfoNIF.Foreground = Brushes.Black
+                If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
+                    TxbloxInfoEmail.Foreground = Brushes.Black
+                    If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Then
+                        TxbloxInfotlf.Foreground = Brushes.Black
+                        If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
+                            TxbloxInfoMovil.Foreground = Brushes.Black
+                            Log.Information("Cliente añadido con exito.")
+                            Dim mensaje As String = "¡Cliente Añadido!"
+                            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                            Dim response As Integer = MsgBox(mensaje, style)
+                            limpiar()
+                        Else
+                            TxbloxInfoMovil.Foreground = Brushes.Red
+                        End If
+                    Else
+                        TxbloxInfotlf.Foreground = Brushes.Red
                     End If
+                Else
+                    TxbloxInfoEmail.Foreground = Brushes.Red
                 End If
+            Else
+                TxblocInfoNIF.Foreground = Brushes.Red
             End If
         End If
 
@@ -84,96 +98,18 @@ Public Class AgregarCliente
             Log.Information("Campos apellidos y fecha nacimiento bloqueados")
             TxbloxInfoApellidos.IsEnabled = False
             dpFecha.IsEnabled = False
-            TxblocInfoApellidos.IsEnabled = False
-            TxblocInfoFechaNac.IsEnabled = False
+            TxblocInfoApellidos.Foreground = Brushes.Gray
+            TxblocInfoFechaNac.Foreground = Brushes.Gray
         Else
             Log.Information("Campos apellidos y fecha nacimiento desbloqueados")
             TxbloxInfoApellidos.IsEnabled = True
             dpFecha.IsEnabled = True
-            TxblocInfoApellidos.IsEnabled = True
-            TxblocInfoFechaNac.IsEnabled = True
+            TxblocInfoApellidos.Foreground = Brushes.Black
+            TxblocInfoFechaNac.Foreground = Brushes.Black
         End If
     End Sub
 
-    Private Function ValidacionDNI(ByVal Documento As String) As Boolean
-        Log.Information("Proceso validacion dni")
-        If Regex.IsMatch(Documento.ToUpper(), "[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]{1}") Then
-            Log.Information("dni correcto")
-            TxblocInfoNIF.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("Dni incorrecto")
-            TxblocInfoNIF.Foreground = Brushes.Red
-            Return False
-        End If
 
-    End Function
 
-    Private Function ValidacionNIE(ByVal Documento As String) As Boolean
-        Log.Information("Proceso validacion nie")
-        If Regex.IsMatch(Documento.ToUpper(), "[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]{1}") Then
-            Log.Information("nie correcto")
-            TxblocInfoNIF.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("nie incorrecto")
-            TxblocInfoNIF.Foreground = Brushes.Red
-            Return False
-        End If
-
-    End Function
-
-    Private Function ValidacionCIF(ByVal Documento As String) As Boolean
-        Log.Information("Proceso validacion cif")
-        If Regex.IsMatch(Documento.ToUpper(), "[ABCDEFGHJKLMNPQRSUVW]{1}[0-9]{8}") Then
-            Log.Information("cif correcto")
-            TxblocInfoNIF.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("cif incorrecto")
-            TxblocInfoNIF.Foreground = Brushes.Red
-            Return False
-        End If
-
-    End Function
-
-    Private Function ValidacionEmail(ByVal Email As String) As Boolean
-        Log.Information("Proceso validacion email")
-        If Regex.IsMatch(Email, "[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4}") Then
-            Log.Information("email correcto")
-            TxbloxInfoEmail.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("email incorrecto")
-            TxbloxInfoEmail.Foreground = Brushes.Red
-            Return False
-        End If
-    End Function
-
-    Private Function ComprobacionTelefono(ByVal tlf As String) As Boolean
-        Log.Information("proceso comprobacion telefono")
-        If Regex.IsMatch(tlf, "[0-9]{9}") Then
-            Log.Information("telefono correcto")
-            TxbloxInfotlf.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("telefono incorrecto")
-            TxbloxInfotlf.Foreground = Brushes.Red
-            Return False
-        End If
-    End Function
-
-    Private Function ComprobacionMovil(ByVal tlfM As String) As Boolean
-        Log.Information("Proceso comprovacion movil")
-        If Regex.IsMatch(tlfM, "[0-9]{9}") Then
-            Log.Information("movil correcto")
-            TxbloxInfoMovil.Foreground = Brushes.Black
-            Return True
-        Else
-            Log.Error("movil incorrecto")
-            TxbloxInfoMovil.Foreground = Brushes.Red
-            Return False
-        End If
-    End Function
 
 End Class

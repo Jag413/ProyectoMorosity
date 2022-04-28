@@ -17,8 +17,12 @@ Public Class Peticiones
         Dim agregarpet As New AgregarPeticion
         agregarpet.Show()
 
-        Dim a As New Informacion
-        a.Show()
+
+
+
+
+
+
 
     End Sub
 
@@ -28,4 +32,14 @@ Public Class Peticiones
         agregarcli.Show()
     End Sub
 
+    Private Sub OnClick_Recargar(sender As Object, e As RoutedEventArgs)
+
+        For i = 1 To 2
+
+            lvPeticiones.Items.Add(New With {.id = i,
+                                   .documento = i,
+                                   .estado = i})
+
+        Next
+    End Sub
 End Class
