@@ -61,14 +61,13 @@ namespace FakeEquifax.Controllers
         public ActionResult EnviaClienteScoring(PersonaScoringBase cliente)
         {
             //_channel.ConfirmSelect();
-            /*int a = 0;
-
-            a = 2 / a;*/
+            
             try
             {
                 // publicar mensaje  
                 _manager.Publicar(cliente, "exchange.scoring.dev", "direct", String.Empty);
             }
+            
             catch(Exception ex)
             {
                 
@@ -82,6 +81,7 @@ namespace FakeEquifax.Controllers
 
     public class PersonaScoringBase
     {
-        public int ClienteId { get; set; }
+        public string tipo { get; set; }
+        public string documento { get; set; }
     }
 }

@@ -296,7 +296,7 @@
     <Compile Include="AgregarPeticion.xaml.vb">
       <DependentUpon>AgregarPeticion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Cliente.vb" />
+    <Compile Include="Comun\Helper.vb" />
     <Compile Include="Inicio.xaml.vb">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
@@ -404,6 +404,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\M_100x98.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\refresh_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
