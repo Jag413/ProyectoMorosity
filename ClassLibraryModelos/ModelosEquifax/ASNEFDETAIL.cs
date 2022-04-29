@@ -12,7 +12,7 @@ namespace ClassLibraryModelos.ModelosEquifax
 
         private const string IS_ASNEF = "000";
         private const string ISNOT_ASNEF = "001";
-        private const string _returncode;
+        private string _returncode;
 
         [JsonPropertyName("identifier")]
         public string Identifier { get; set; }
