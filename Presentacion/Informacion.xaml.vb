@@ -10,4 +10,8 @@
 
         Close()
     End Sub
+
+    Private Sub OnClick_Aceptar(sender As Object, e As RoutedEventArgs)
+
+    End Sub
 End Class
