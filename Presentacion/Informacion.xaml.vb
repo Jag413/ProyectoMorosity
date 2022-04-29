@@ -7,7 +7,6 @@
     End Sub
 
     Private Sub OnClick_Salir(sender As Object, e As RoutedEventArgs)
-
         Close()
     End Sub
 

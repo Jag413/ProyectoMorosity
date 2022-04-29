@@ -6,6 +6,14 @@ Public Class Peticiones
         InitializeComponent()
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
         Log.Information("Inicio ventana peticiones.")
+
+    End Sub
+
+    Private Sub PantallaInformacion(sender As Object, e As RoutedEventArgs)
+        Dim item As ListViewItem
+        If item IsNot Null And item.IsSelected Then
+
+        End If
     End Sub
 
     Private Sub OnClick_Buscar(sender As Object, e As RoutedEventArgs)
@@ -16,14 +24,7 @@ Public Class Peticiones
         Log.Information("llama a añadir peticion nueva")
         Dim agregarpet As New AgregarPeticion
         agregarpet.Show()
-
-
-
-
-
-
-
-
+        'OPCION -> QUE SE RECARGUE SOLAS LAS PETICIONES
     End Sub
 
     Private Sub OnClic_AniadirCliente(sender As Object, e As RoutedEventArgs)
