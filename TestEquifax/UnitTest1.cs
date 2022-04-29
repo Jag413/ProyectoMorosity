@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using ClassLibraryModelos.ModelosEquifax;
+using ClassLibraryModelos;
 
 
 namespace TestEquifax
@@ -710,6 +711,12 @@ namespace TestEquifax
 
             EquifaxResponse myDeserializedClassError = JsonSerializer.Deserialize<EquifaxResponse>(responseError);
 
+        }
+
+        [TestMethod]
+        public void TestDiccionarios()
+        {
+            Error errorPrueba = (Error)DiccionariosEnumerados.CodigosAsnef["001"];
         }
 
         #region json

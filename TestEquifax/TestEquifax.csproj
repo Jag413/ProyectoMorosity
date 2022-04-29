@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryModelos\ClassLibraryModelos.csproj" />
     <ProjectReference Include="..\FakeEquifax\FakeEquifax.csproj" />
   </ItemGroup>
 

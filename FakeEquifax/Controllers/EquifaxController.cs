@@ -19,8 +19,10 @@ namespace FakeEquifax.Controllers
         private ConnectionFactory _factoriaRabbitConexion;
         private readonly IConnection _conexionRabbit;
         private readonly IModel _channel;
+        private readonly string QeueName = "exchange.scoring.dev";
 
-        
+
+
         private IRabbitManager _manager;  
   
         public EquifaxController(IRabbitManager manager)
@@ -65,7 +67,7 @@ namespace FakeEquifax.Controllers
             try
             {
                 // publicar mensaje  
-                _manager.Publicar(cliente, "exchange.scoring.dev", "direct", String.Empty);
+                _manager.Publicar(cliente, QeueName, "direct", String.Empty);
             }
             
             catch(Exception ex)
@@ -75,6 +77,20 @@ namespace FakeEquifax.Controllers
 
             return Ok(cliente);
         }
+
+        /*public void RespuestaClienteScoring(PersonaScoringBase cliente)
+        {
+            try
+            {
+                _manager.Consumir(cliente, "exchange.scoring.dev");
+            }     
+            catch (Exception ex)
+            {
+
+            }
+
+            return Ok();
+        }*/
 
     }
 
