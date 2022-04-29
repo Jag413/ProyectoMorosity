@@ -10,7 +10,7 @@ namespace ClassLibraryModelos.ModelosEquifax
     public class PersonalInformation
     {
 
-        private string _idType?;
+        private string? _idType;
         private string _idCode;
         private const string IDCODE_DEFAULT = "00000000";
         private enum IdTypes { ID, PASS, NA }
@@ -28,7 +28,7 @@ namespace ClassLibraryModelos.ModelosEquifax
                 if (!String.IsNullOrEmpty(IdAuxiliar) && !String.IsNullOrEmpty(CorrelationId))
                 {
                     if (!(!_idType.ToUpper().Equals(IdTypes.ID) || !_idType.ToUpper().Equals(IdTypes.PASS) || !_idType.ToUpper().Equals(IdTypes.NA))) { return _idType.ToUpper(); }
-                    else { return null }  
+                    else { return null; }  
                 }
                 else
                 {

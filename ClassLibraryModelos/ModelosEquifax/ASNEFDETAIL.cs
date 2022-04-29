@@ -47,6 +47,6 @@ namespace ClassLibraryModelos.ModelosEquifax
         public List<CreditOperation> CreditOperations { get; set; }
 
         [JsonPropertyName("specificCreditOperationsDetails")]
-        public List<SpecificCreditOperationsDetail> SpecificCreditOperationsDetails { get; set; }
+        public List<SpecificCreditOperationsDetails> SpecificCreditOperationsDetails { get; set; }
     }
 }
