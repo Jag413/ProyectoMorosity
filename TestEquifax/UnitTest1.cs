@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using ClassLibraryModelos.ModelosEquifax;
+using ClassLibraryModelos;
 
 
 namespace TestEquifax
@@ -626,7 +627,7 @@ namespace TestEquifax
     ""interactionId"": ""ID-01722210249-44509-1542220295976-0-3996"",
     ""transactionId"": 71795
 }";
-      
+
 
 
 
@@ -667,14 +668,14 @@ namespace TestEquifax
 
             Persona p = JsonSerializer.Deserialize<Persona>(a);
             Persona h = JsonSerializer.Deserialize<Persona>(hijos);
-            
+
             Console.WriteLine(h);
-    }
-        
-        
-        
-        
-        
+        }
+
+
+
+
+
         [TestMethod]
         public void TestMethodCreateRequest()
         {
@@ -693,13 +694,13 @@ namespace TestEquifax
             requestDocumento.Applicants.PrimaryConsumer.PersonalInformation.IdCode = "23432111j";
 
             string requestDocumentoJson;
-        
+
             if (requestDocumento.IsValidToSerializeBasicEquifax())
             {
                 requestDocumentoJson = JsonSerializer.Serialize(requestDocumento);
             }
         }
-      
+
         [TestMethod]
         public void TestMethodReadResponse()
         {
@@ -711,11 +712,16 @@ namespace TestEquifax
             EquifaxResponse myDeserializedClassError = JsonSerializer.Deserialize<EquifaxResponse>(responseError);
 
         }
-        
-        
-      #region json
 
-      private string responseError = @"{
+        [TestMethod]
+        public void TestDiccionarios()
+        {
+            Error errorPrueba = (Error)DiccionariosEnumerados.CodigosAsnef["001"];
+        }
+
+        #region json
+
+        private string responseError = @"{
                                             ""applicants"": {
                                               ""primaryConsumer"": {
                                                 ""personalInformation"": {
@@ -789,8 +795,8 @@ namespace TestEquifax
                                             ""interactionId"": ""ID-01722210249-44509-1542220295976-0-3996"",
                                             ""transactionId"": 71795
                                           }";
-        
-        
+
+
         private string responseAsnef = @"{
                                           ""applicants"": {
                                             ""primaryConsumer"": {
@@ -1196,8 +1202,8 @@ namespace TestEquifax
                                           ""transactionId"": 71796
                                         }";
 
-      #endregion
-      
+        #endregion
+
 
     }
 }

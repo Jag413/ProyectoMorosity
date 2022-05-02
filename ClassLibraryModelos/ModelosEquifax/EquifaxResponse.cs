@@ -19,7 +19,7 @@ namespace ClassLibraryModelos.ModelosEquifax
 
         [JsonPropertyName("errors")]
         public List<Error> Errors { get; set; }
-
+        //TODO Si el estado es COMPLETED y sino es ERROR, se hace algo más o se deja en inglés
         [JsonPropertyName("transactionState")]
         public string TransactionState { get; set; }
 
