@@ -1,4 +1,9 @@
 ﻿Class Informacion
+
+    Public Sub New(dni As String)
+        InitializeComponent()
+        GetDni(dni)
+    End Sub
     Private Sub OnClick_CambiaEstado(sender As Object, e As RoutedEventArgs)
         'Cambiar el estado al que corresponda
         Dim ventana As New Peticiones
@@ -12,5 +17,9 @@
 
     Private Sub OnClick_Aceptar(sender As Object, e As RoutedEventArgs)
 
+    End Sub
+
+    Private Sub GetDni(dni As String)
+        TxboxInfoNIF.Text = dni
     End Sub
 End Class
