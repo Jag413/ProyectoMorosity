@@ -7,13 +7,13 @@ namespace DAL1StSharp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class inicialv3 : IMigrationMetadata
+    public sealed partial class Herenciav1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(inicialv3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Herenciav1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205030938167_inicialv3"; }
+            get { return "202205031139556_Herenciav1"; }
         }
         
         string IMigrationMetadata.Source

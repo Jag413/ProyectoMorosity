@@ -54,19 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL1stContext.cs" />
-    <Compile Include="Migrations\202205030002457_inicialv1.cs" />
-    <Compile Include="Migrations\202205030002457_inicialv1.designer.cs">
-      <DependentUpon>202205030002457_inicialv1.cs</DependentUpon>
+    <Compile Include="Migrations\202205031116118_InicialDbPruebas.cs" />
+    <Compile Include="Migrations\202205031116118_InicialDbPruebas.designer.cs">
+      <DependentUpon>202205031116118_InicialDbPruebas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205030008084_inicialv2.cs" />
-    <Compile Include="Migrations\202205030008084_inicialv2.designer.cs">
-      <DependentUpon>202205030008084_inicialv2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205030938167_inicialv3.cs" />
-    <Compile Include="Migrations\202205030938167_inicialv3.designer.cs">
-      <DependentUpon>202205030938167_inicialv3.cs</DependentUpon>
+    <Compile Include="Migrations\202205031139556_Herenciav1.cs" />
+    <Compile Include="Migrations\202205031139556_Herenciav1.designer.cs">
+      <DependentUpon>202205031139556_Herenciav1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Base.cs" />
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Sucursal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,16 +74,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205030002457_inicialv1.resx">
-      <DependentUpon>202205030002457_inicialv1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205031116118_InicialDbPruebas.resx">
+      <DependentUpon>202205031116118_InicialDbPruebas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205030008084_inicialv2.resx">
-      <DependentUpon>202205030008084_inicialv2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205030938167_inicialv3.resx">
-      <DependentUpon>202205030938167_inicialv3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205031139556_Herenciav1.resx">
+      <DependentUpon>202205031139556_Herenciav1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

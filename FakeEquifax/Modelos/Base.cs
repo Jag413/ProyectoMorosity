@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FakeEquifax.Modelos
+namespace DAL1StSharp.Modelos
 {
     public class Base
     {
