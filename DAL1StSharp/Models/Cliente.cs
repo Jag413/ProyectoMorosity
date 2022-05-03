@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
+    [Table("___Clientes")]
     public class Cliente : Base
     {
         [Key]
@@ -39,5 +41,6 @@ namespace DAL1StSharp.Modelos
         public string Ciudad { get; set; }
         public int dSucursal { get; set; } //FK Sucursal
         //public Sucursal Sucursal { get; set; } //FK Sucursal
+        public ICollection<Peticion> Peticiones { get; set; }
     }
 }

@@ -62,10 +62,20 @@
     <Compile Include="Migrations\202205031139556_Herenciav1.designer.cs">
       <DependentUpon>202205031139556_Herenciav1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205031532121_entidadRelacionadas.cs" />
+    <Compile Include="Migrations\202205031532121_entidadRelacionadas.designer.cs">
+      <DependentUpon>202205031532121_entidadRelacionadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteCuenta.cs" />
+    <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Movimiento.cs" />
+    <Compile Include="Models\Peticion.cs" />
     <Compile Include="Models\Sucursal.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
@@ -80,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205031139556_Herenciav1.resx">
       <DependentUpon>202205031139556_Herenciav1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205031532121_entidadRelacionadas.resx">
+      <DependentUpon>202205031532121_entidadRelacionadas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

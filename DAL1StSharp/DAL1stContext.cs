@@ -18,7 +18,8 @@ namespace DAL1StSharp
 
         //public DbSet<Student> Students { get; set; }
         public DbSet<DAL1StSharp.Modelos.Sucursal> Sucursales { get; set; }
-
+        public DbSet<DAL1StSharp.Modelos.Peticion> Peticiones { get; set; }
+        public DbSet<DAL1StSharp.Modelos.Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

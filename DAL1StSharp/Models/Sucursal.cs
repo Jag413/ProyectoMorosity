@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
-    [Table("Sucursal")]
+    [Table("___Sucursal")]
     public class Sucursal : Base
     {
         [Key]

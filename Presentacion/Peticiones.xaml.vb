@@ -2,25 +2,46 @@
 
 Public Class Peticiones
 
+
     Public Sub New()
         InitializeComponent()
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
         Log.Information("Inicio ventana peticiones.")
+        cargar()
 
     End Sub
 
     Private Sub PantallaInformacion(sender As Object, e As RoutedEventArgs)
         'Dim item As ListViewItem
+        Dim migrid As ListViewItem = sender
+
+
         If lvPeticiones.Items.IsEmpty Then
         Else
-            For i = 0 To lvPeticiones.SelectedItems.Count
-                Dim dni = Me.lvPeticiones.Items.Item(i).ToString
+            'With lvPeticiones
+            Dim linea = lvPeticiones.SelectedItems(0).SubItems(1).Text
+            Dim d = lvPeticiones.Items.Item(linea).id
+            Dim dni = lvPeticiones.Items.Item(linea).documento
 
+            Dim infor As New Informacion(dni)
+            infor.Show()
+            'End With
+            'For i = 0 To lvPeticiones.Items.Count
+            '    If lvPeticiones.Items.Item(i).id = migrid.Content("Id") Then
+            '        Dim dni = lvPeticiones.Items.Item(i).documento
 
+            '        Dim infor As New Informacion(dni)
+            '        infor.Show()
+            '    End If
 
-                Dim infor As New Informacion(dni)
-                infor.Show()
-            Next
+            'Next
+            'If Me.lvPeticiones.Items.Item(itm).id = i Then
+            '    Dim dni = Me.lvPeticiones.Items.Item(i).documento
+            '    Dim infor As New Informacion(dni)
+            '    infor.Show()
+            'End If
+
+            ' Next
 
             'Dim info = lvPeticiones.SelectedItems
             'Dim dni As String
@@ -54,31 +75,17 @@ Public Class Peticiones
 
     Private Sub OnClick_Recargar(sender As Object, e As RoutedEventArgs)
 
-        For i = 1 To 2
+    End Sub
 
-            lvPeticiones.Items.Add(New With {.id = i, .documento = i, .estado = i})
+    Private Sub cargar()
+        Dim ctx As New DAL1StSharp.DAL1stContext
+        Dim consulta = ctx.Peticiones.ToList
+        lvPeticiones.DataContext = ctx.Clientes
+
+        For Each i In consulta
+            lvPeticiones.Items.Add(i)
 
         Next
-        'StrSql = "select * from colores order by DescripcionColor"
 
-        'Dim DatareaderSQL As SqlDataReader = Conexion.EjecutaDataReaderSQL(StrSql)
-
-        'If DatareaderSQL.HasRows Then
-
-        '    While DatareaderSQL.Read
-
-        '        If Not IsDBNull(DatareaderSQL.Item("IDColor")) Then
-
-        '            Dim Codex As String = Trim(DatareaderSQL.Item("IDColor"))
-
-        '            Dim Descrip As String = Trim(DatareaderSQL.Item("DescripcionColor"))
-
-        '            ListView1.Items.Add(New With {.codigo = Codex.Trim, .descrip = Descrip.Trim})
-
-        '        End If
-
-        '    End While
-
-        'End If
     End Sub
 End Class

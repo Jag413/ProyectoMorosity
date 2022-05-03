@@ -3,7 +3,7 @@ Imports System.Windows
 Imports Serilog
 Imports MySql.Data.MySqlClient
 Public Class Inicio
-    Friend conexion As MySqlConnection
+    'Friend conexion As MySqlConnection
     Public Sub New()
         InitializeComponent()
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
@@ -12,7 +12,7 @@ Public Class Inicio
         Log.Information("Inicio ventana inicio.")
 
         Dim con As String = "server=;database=;userid=;password=;port=3306;"
-        conexion = New MySqlConnection(con)
+        'conexion = New MySqlConnection(con)
 
         'Dim cadenaConexion As String = "server=192.168.1.2;database=mibasededatos;userid=root;password=holahola;port=3306;"
 
