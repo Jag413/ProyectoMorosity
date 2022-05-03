@@ -97,6 +97,7 @@ namespace WorkerServiceScoring
             if (resultado)
             {
                 _channel.BasicAck(e.DeliveryTag, false);
+
             } 
             else
             {
