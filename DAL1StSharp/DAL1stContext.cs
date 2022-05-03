@@ -16,8 +16,8 @@ namespace DAL1StSharp
             // Database.SetInitializer(new MigrateDatabaseToLatestVersion<DAL1stContext, DAL1stContext.Migrations.Configuration>());
         }
 
-        public DbSet<Student> Students { get; set; }
-
+        //public DbSet<Student> Students { get; set; }
+        public DbSet<DAL1StSharp.Modelos.Sucursal> Sucursales { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
