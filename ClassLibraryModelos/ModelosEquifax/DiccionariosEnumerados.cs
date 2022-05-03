@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ClassLibraryModelos.ModelosEquifax
 {
-    internal class DiccionariosEnumerados
+    public class DiccionariosEnumerados
     {
-        public Hashtable NaturalezasIntervinientes = new Hashtable()
+        public static Hashtable NaturalezasIntervinientes = new Hashtable()
         {
             { "00", new Nature { Code = "00", DescriptionEn = "SEVERAL CATEGORIES", DescriptionEs = "DIVERSAS" } },
             { "01", new Nature { Code = "01", DescriptionEn = "HOLDER", DescriptionEs = "TITULAR" } },
@@ -21,7 +21,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "07", new Nature { Code = "07", DescriptionEn = "PARTNER", DescriptionEs = "SOCIO COMANDITARIO" } }
         };
 
-        public Hashtable ProductoOperacion = new Hashtable()
+        public static Hashtable ProductoOperacion = new Hashtable()
         {
             { "01", new Product { Code = "01", DescriptionEn = "AUTOMOBILE FINANCING", DescriptionEs = "FINANC. AUTOMOVILES" } },
             { "02", new Product { Code = "02", DescriptionEn = "CONSUMPTION FINANCING", DescriptionEs = "FINANC. CONSUMO" } },
@@ -52,7 +52,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "99", new Product { Code = "14", DescriptionEn = "OTHERS", DescriptionEs = "OTROS" } }
         };
 
-        public Hashtable SituacionOperacion = new Hashtable()
+        public static Hashtable SituacionOperacion = new Hashtable()
         {
             { "01", new Situation { Code = "01", DescriptionEn = "FRIENDLY NEGOTIATION", DescriptionEs = "AMISTOSO" } },
             { "02", new Situation { Code = "02", DescriptionEn = "PRE-JUDICIAL", DescriptionEs = "PREJUDICIAL" } },
@@ -93,7 +93,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "99", new { Code: "99", DescripcionEn: "SEVERAL CATEGORIES", DescripcionEs:  "DIVERSAS" } }
         };*/
 
-        public Hashtable CodigosAsnef = new Hashtable()
+        public static Hashtable CodigosAsnef = new Hashtable()
         {
             { "000", new Error{ Code = "000", Description = "Si existen datos para la petición realizada" }},
             { "001", new Error { Code = "001", Description = "No existen datos para la petición realizada" } },
@@ -130,7 +130,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "590", new Error { Code = "590", Description = "LOGOFF establecido" } }
         };
 
-        public Hashtable CodigosError = new Hashtable()
+        public static Hashtable CodigosError = new Hashtable()
         {
             { "ICESD001", new Error{ Code = "ICESD001", Description = "Petición vacía: significa que el mensaje de JSON no está presente en la petición" } },
             { "ICESD002", new Error{ Code = "ICESD002", Description = "Petición no incluye sección 'applicants'" } },
@@ -144,7 +144,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "ICDAS004", new Error{ Code = "ICDAS004", Description = "Servicio configurado representa problemas al final del servicio" } }
         };
 
-        public Hashtable CodigosWorstSituation = new Hashtable()
+        public static Hashtable CodigosWorstSituation = new Hashtable()
         {
             { "1", "Amistoso" },
             { "2", "Perjudicial" },
@@ -158,7 +158,7 @@ namespace ClassLibraryModelos.ModelosEquifax
             { "99", "Otros" }
         };
 
-        public Hashtable CodigosRating = new Hashtable()
+        public static Hashtable CodigosRating = new Hashtable()
         {
             { "1", "Muy alto" },
             { "2", "Alto" },
