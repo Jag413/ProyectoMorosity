@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryRabbit", "Class
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryModelos", "ClassLibraryModelos\ClassLibraryModelos.csproj", "{C95250EB-0729-469A-B873-375917A6166E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL1StSharp", "DAL1StSharp\DAL1StSharp.csproj", "{05CABA0F-9D08-4623-ACD7-F7C14F530F29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{C95250EB-0729-469A-B873-375917A6166E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95250EB-0729-469A-B873-375917A6166E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C95250EB-0729-469A-B873-375917A6166E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05CABA0F-9D08-4623-ACD7-F7C14F530F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05CABA0F-9D08-4623-ACD7-F7C14F530F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05CABA0F-9D08-4623-ACD7-F7C14F530F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05CABA0F-9D08-4623-ACD7-F7C14F530F29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
