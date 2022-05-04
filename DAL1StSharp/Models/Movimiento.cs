@@ -17,12 +17,14 @@ namespace DAL1StSharp.Modelos
         [Column("Importe", TypeName = "Decimal")]
         [MaxLength(30)]
         public Double Importe { get; set; }
-        public int IdCuentaOrigen { get; set; } //FK Cuenta
+        
         [Column("Titulo", TypeName = "nvarchar")]
         [MaxLength(30)]
         public string Titulo { get; set; }
         [Column("Descripcion", TypeName = "nvarchar")]
         [MaxLength(3000)]
         public string Descripcion { get; set; }
+        [Column("CuentaOrigen")]
+       public Cuenta Cuenta { get; set; } //FK Cuenta
     }
 }

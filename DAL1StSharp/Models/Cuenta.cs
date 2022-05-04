@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
+    [Table("___Cuentas")]
     public class Cuenta : Base
     {
         [Key]
@@ -13,6 +15,8 @@ namespace DAL1StSharp.Modelos
         [Column("Saldo", TypeName = "decimal")]
         [MaxLength(30)]
         public double Saldo { get; set; }
+        public virtual ICollection<Cliente> Cliente { get; set; }
+
        
     }
 }
