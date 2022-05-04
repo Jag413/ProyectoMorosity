@@ -12,46 +12,15 @@ Public Class Peticiones
     End Sub
 
     Private Sub PantallaInformacion(sender As Object, e As RoutedEventArgs)
-        'Dim item As ListViewItem
+
         Dim migrid As ListViewItem = sender
 
 
         If lvPeticiones.Items.IsEmpty Then
         Else
-            'With lvPeticiones
-            Dim linea = lvPeticiones.SelectedItems(0).SubItems(1).Text
-            Dim d = lvPeticiones.Items.Item(linea).id
-            Dim dni = lvPeticiones.Items.Item(linea).documento
-
+            Dim dni = migrid.DataContext.documento
             Dim infor As New Informacion(dni)
             infor.Show()
-            'End With
-            'For i = 0 To lvPeticiones.Items.Count
-            '    If lvPeticiones.Items.Item(i).id = migrid.Content("Id") Then
-            '        Dim dni = lvPeticiones.Items.Item(i).documento
-
-            '        Dim infor As New Informacion(dni)
-            '        infor.Show()
-            '    End If
-
-            'Next
-            'If Me.lvPeticiones.Items.Item(itm).id = i Then
-            '    Dim dni = Me.lvPeticiones.Items.Item(i).documento
-            '    Dim infor As New Informacion(dni)
-            '    infor.Show()
-            'End If
-
-            ' Next
-
-            'Dim info = lvPeticiones.SelectedItems
-            'Dim dni As String
-
-            'For i = 1 To lvPeticiones.Items.Count
-
-            '    dni = lvPeticiones.Items(lvPeticiones.SelectedIndex)
-            '    Dim infor As New Informacion(dni)
-            '    infor.Show()
-            'Next
 
         End If
     End Sub
@@ -78,12 +47,19 @@ Public Class Peticiones
     End Sub
 
     Private Sub cargar()
-        Dim ctx As New DAL1StSharp.DAL1stContext
-        Dim consulta = ctx.Peticiones.ToList
-        lvPeticiones.DataContext = ctx.Clientes
 
-        For Each i In consulta
-            lvPeticiones.Items.Add(i)
+        Dim ctx As New DAL1StSharp.DAL1stContext
+        Dim consultaPet = ctx.Peticiones.ToList
+        Dim consultacli = ctx.Clientes.ToList
+
+
+        For Each i In consultaPet
+            For Each e In consultacli
+                If i.Cliente.IdCliente = e.IdCliente Then
+                    lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = e.DocumentoId, .estado = i.Estado})
+                End If
+            Next
+
 
         Next
 

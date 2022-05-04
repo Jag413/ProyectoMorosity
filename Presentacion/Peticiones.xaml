@@ -105,9 +105,6 @@
                         <EventSetter Event="UIElement.PreviewMouseLeftButtonDown" Handler="PantallaInformacion" />
                     </Style>
                 </ListView.ItemContainerStyle>
-                <ListView.DataContext>
-                    <DAL1StSharp:DAL1stContext/>
-                </ListView.DataContext>
             </ListView>
 
 
