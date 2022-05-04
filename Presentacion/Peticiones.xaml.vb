@@ -18,8 +18,8 @@ Public Class Peticiones
 
         If lvPeticiones.Items.IsEmpty Then
         Else
-            Dim dni = migrid.DataContext.documento
-            Dim infor As New Informacion(dni)
+            Dim id = migrid.DataContext.id
+            Dim infor As New Informacion(id)
             infor.Show()
 
         End If
