@@ -8,7 +8,7 @@ Imports Newtonsoft.Json
 
 Public Class AgregarPeticion
 
-
+    Dim ctx As New DAL1StSharp.DAL1stContext
     Public Sub New()
         InitializeComponent()
     End Sub

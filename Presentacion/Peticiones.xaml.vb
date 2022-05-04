@@ -2,7 +2,7 @@
 
 Public Class Peticiones
 
-
+    Dim ctx As New DAL1StSharp.DAL1stContext
     Public Sub New()
         InitializeComponent()
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
@@ -19,14 +19,23 @@ Public Class Peticiones
         If lvPeticiones.Items.IsEmpty Then
         Else
             Dim id = migrid.DataContext.id
-            Dim infor As New Informacion(id)
+            Dim infor As New Informacion(id, Me)
             infor.Show()
 
         End If
     End Sub
 
     Private Sub OnClick_Buscar(sender As Object, e As RoutedEventArgs)
-        Log.Information("Busca peticion concreta")
+        ctx.Configuration.LazyLoadingEnabled = False
+        Dim consultaPet = ctx.Peticiones.ToList
+
+        lvPeticiones.Items.Clear()
+        For Each i In consultaPet
+            If i.Cliente.DocumentoId.ToUpper = TextBuscador.Text.ToUpper Then
+                lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = i.Cliente.DocumentoId.ToUpper, .estado = i.Estado})
+            End If
+        Next
+
     End Sub
 
     Private Sub OnClic_AniadirPeticion(sender As Object, e As RoutedEventArgs)
@@ -43,20 +52,21 @@ Public Class Peticiones
     End Sub
 
     Private Sub OnClick_Recargar(sender As Object, e As RoutedEventArgs)
-
+        cargar()
     End Sub
 
-    Private Sub cargar()
+    Public Sub cargar()
+        ctx = New DAL1StSharp.DAL1stContext
+        Dim consultaPet = Nothing
+        Dim consultacli = Nothing
+        consultaPet = ctx.Peticiones.ToList
+        consultacli = ctx.Clientes.ToList
 
-        Dim ctx As New DAL1StSharp.DAL1stContext
-        Dim consultaPet = ctx.Peticiones.ToList
-        Dim consultacli = ctx.Clientes.ToList
-
-
+        lvPeticiones.Items.Clear()
         For Each i In consultaPet
             For Each e In consultacli
                 If i.Cliente.IdCliente = e.IdCliente Then
-                    lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = e.DocumentoId, .estado = i.Estado})
+                    lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = e.DocumentoId.ToUpper, .estado = i.Estado})
                 End If
             Next
 

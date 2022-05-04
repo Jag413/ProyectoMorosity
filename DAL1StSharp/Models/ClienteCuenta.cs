@@ -25,7 +25,7 @@ namespace DAL1StSharp.Modelos
         public DateTime FechaAlta { get; set; }
         [Column("FechaBaja", TypeName = "Date")]
         
-        public DateTime FechaBaja { get; set; }
+        public DateTime? FechaBaja { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Cuenta> Cuenta { get; set; }
 
