@@ -70,10 +70,13 @@
     <Compile Include="Migrations\202205040935475_entidades.designer.cs">
       <DependentUpon>202205040935475_entidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205040948477_inmigracionTablas.cs" />
+    <Compile Include="Migrations\202205040948477_inmigracionTablas.designer.cs">
+      <DependentUpon>202205040948477_inmigracionTablas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\ClienteCuenta.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Movimiento.cs" />
@@ -100,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205040935475_entidades.resx">
       <DependentUpon>202205040935475_entidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040948477_inmigracionTablas.resx">
+      <DependentUpon>202205040948477_inmigracionTablas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

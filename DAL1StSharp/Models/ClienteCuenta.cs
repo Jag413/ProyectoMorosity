@@ -7,15 +7,12 @@ using System.Data.Entity;
 namespace DAL1StSharp.Modelos
 {
     [Table("___ClienteCuenta")]
-    public class ClienteCuenta : DbContext
+   /* public class ClienteCuenta
     {
-        protected ClienteCuenta() : base("SchoolDb-DataAnnotations")
-        {
-        }
+       
 
-        public int IdClienteTitular { get; set; } //PK y FK Cliente
-        public int IdCuenta { get; set; } //PK y FK Cuenta
-        public int IdClienteAutorizado { get; set; } //FK Cliente
+        
+        public Cliente ClienteAutorizado { get; set; } //FK Cliente
         [Column("FechaAlta", TypeName = "Date")]
         [MaxLength(15)]
         public DateTime FechaAlta { get; set; }
@@ -30,4 +27,4 @@ namespace DAL1StSharp.Modelos
             base.OnModelCreating(modelBuilder);
         }
     }
-}
+}*/

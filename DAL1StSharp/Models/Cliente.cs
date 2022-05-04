@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
-    [Table("___Clientes")]
+    [Table("___Cliente")]
     public class Cliente : Base
     {
         [Key]
@@ -41,7 +41,7 @@ namespace DAL1StSharp.Modelos
         public string Ciudad { get; set; }
         //public int dSucursal { get; set; } //FK Sucursal
         public Sucursal Sucursal { get; set; } //FK Sucursal
-        public ICollection<Peticion> Peticiones { get; set; }
+        public ICollection<Peticion> Peticion { get; set; }
         //FK N:M ClienteCuenta
         public virtual ICollection<Cuenta> Cuenta { get; set; }
 

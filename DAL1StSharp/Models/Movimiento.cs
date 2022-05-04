@@ -4,19 +4,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
+    [Table("___Movimiento")]
     public class Movimiento : Base
     {
         [Key]
         public int IdMovimiento { get; set; }
         [Column("FechaValor", TypeName = "Date")]
-        [MaxLength(15)]
+        
         public DateTime FechaValor { get; set; }
         [Column("FechaOperacion", TypeName = "Date")]
-        [MaxLength(15)]
+        
         public DateTime FechaOperacion { get; set; }
         [Column("Importe", TypeName = "Decimal")]
-        [MaxLength(30)]
-        public Double Importe { get; set; }
+        
+        public decimal Importe { get; set; }
         
         [Column("Titulo", TypeName = "nvarchar")]
         [MaxLength(30)]

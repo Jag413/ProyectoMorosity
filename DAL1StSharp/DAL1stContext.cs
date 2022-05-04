@@ -20,6 +20,10 @@ namespace DAL1StSharp
         public DbSet<DAL1StSharp.Modelos.Sucursal> Sucursales { get; set; }
         public DbSet<DAL1StSharp.Modelos.Peticion> Peticiones { get; set; }
         public DbSet<DAL1StSharp.Modelos.Cliente> Clientes { get; set; }
+        public DbSet<DAL1StSharp.Modelos.Cuenta> Cuentas { get; set; }
+        public DbSet<DAL1StSharp.Modelos.Movimiento> Movimientos { get; set; }
+        //public DbSet<DAL1StSharp.Modelos.ClienteCuenta> ClienteCuentas { get; set; }
+        public DbSet<DAL1StSharp.Modelos.Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

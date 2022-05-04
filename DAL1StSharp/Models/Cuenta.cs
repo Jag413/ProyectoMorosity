@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL1StSharp.Modelos
 {
-    [Table("___Cuentas")]
+    [Table("___Cuenta")]
     public class Cuenta : Base
     {
         [Key]
@@ -13,10 +13,11 @@ namespace DAL1StSharp.Modelos
         [MaxLength(24)]
         public string NumCuenta { get; set; }
         [Column("Saldo", TypeName = "decimal")]
-        [MaxLength(30)]
-        public double Saldo { get; set; }
+        public decimal Saldo { get; set; }
         public virtual ICollection<Cliente> Cliente { get; set; }
+       public ICollection<Movimiento> Movimiento { get; set; }  
 
-       
+
+
     }
 }
