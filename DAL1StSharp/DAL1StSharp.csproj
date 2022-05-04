@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202205031532121_entidadRelacionadas.designer.cs">
       <DependentUpon>202205031532121_entidadRelacionadas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205040935475_entidades.cs" />
+    <Compile Include="Migrations\202205040935475_entidades.designer.cs">
+      <DependentUpon>202205040935475_entidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205031532121_entidadRelacionadas.resx">
       <DependentUpon>202205031532121_entidadRelacionadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040935475_entidades.resx">
+      <DependentUpon>202205040935475_entidades.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
