@@ -3,6 +3,7 @@ Imports Serilog
 Imports Serilog.Events
 
 Public Class AgregarCliente
+    Dim ctx As New DAL1StSharp.DAL1stContext
 
     Public Sub New()
 
@@ -44,10 +45,19 @@ Public Class AgregarCliente
                         TxbloxInfotlf.Foreground = Brushes.Black
                         If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
                             TxbloxInfoMovil.Foreground = Brushes.Black
+
+                            'Insertar en la base de datos
+
+
                             Log.Information("Cliente añadido con exito.")
                             Dim mensaje As String = "¡Cliente Añadido!"
                             Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
                             Dim response As Integer = MsgBox(mensaje, style)
+
+                            ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
+
+
+
                             limpiar()
                         Else
                             TxbloxInfoMovil.Foreground = Brushes.Red
@@ -62,6 +72,7 @@ Public Class AgregarCliente
                 TxblocInfoNIF.Foreground = Brushes.Red
             End If
         End If
+
 
         'Añadir datos a la base de datos
 

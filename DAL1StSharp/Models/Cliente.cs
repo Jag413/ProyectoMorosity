@@ -27,6 +27,9 @@ namespace DAL1StSharp.Modelos
         [Column("Telefono", TypeName = "nvarchar")]
         [MaxLength(15)]
         public string Telefono { get; set; }
+        [Column("Movil", TypeName = "nvarchar")]
+        [MaxLength(15)]
+        public string Movil { get; set; }
         [Column("Email", TypeName = "nvarchar")]
         [MaxLength(50)]
         public string Email { get; set; }

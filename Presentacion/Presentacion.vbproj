@@ -295,6 +295,7 @@
     <Compile Include="AgregarPeticion.xaml.vb">
       <DependentUpon>AgregarPeticion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Comun\ClienteDTO.vb" />
     <Compile Include="Comun\Helper.vb" />
     <Compile Include="Comun\PeticionDTO.vb" />
     <Compile Include="Inicio.xaml.vb">
