@@ -12,6 +12,10 @@ namespace DAL1StSharp.Modelos
         [Column("Estado", TypeName = "nvarchar")]
         [MaxLength(20)]
         public string Estado { get; set; }
+        [Column("IsOk", TypeName = "bit")]
+        public bool IsOk { get; set; } 
+        [Column("Razones", TypeName = "nvarchar")]
+        public string Razones { get; set; }
 
         public virtual Cliente Cliente { get; set; } //FK Cliente
     }

@@ -14,7 +14,7 @@ namespace DAL1StSharp.Modelos
         public string NumCuenta { get; set; }
         [Column("Saldo", TypeName = "decimal")]
         public decimal Saldo { get; set; }
-        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual ICollection<ClienteCuenta> ClienteCuenta { get; set; }
        public ICollection<Movimiento> Movimiento { get; set; }  
 
 

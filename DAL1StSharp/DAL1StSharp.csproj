@@ -74,9 +74,22 @@
     <Compile Include="Migrations\202205040948477_inmigracionTablas.designer.cs">
       <DependentUpon>202205040948477_inmigracionTablas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205041013474_inmigracionTablas2.cs" />
+    <Compile Include="Migrations\202205041013474_inmigracionTablas2.designer.cs">
+      <DependentUpon>202205041013474_inmigracionTablas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205041016329_inmigracionTablas3.cs" />
+    <Compile Include="Migrations\202205041016329_inmigracionTablas3.designer.cs">
+      <DependentUpon>202205041016329_inmigracionTablas3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205041024518_inmigracionTablas4.cs" />
+    <Compile Include="Migrations\202205041024518_inmigracionTablas4.designer.cs">
+      <DependentUpon>202205041024518_inmigracionTablas4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteCuenta.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Movimiento.cs" />
@@ -106,6 +119,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205040948477_inmigracionTablas.resx">
       <DependentUpon>202205040948477_inmigracionTablas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205041013474_inmigracionTablas2.resx">
+      <DependentUpon>202205041013474_inmigracionTablas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205041016329_inmigracionTablas3.resx">
+      <DependentUpon>202205041016329_inmigracionTablas3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205041024518_inmigracionTablas4.resx">
+      <DependentUpon>202205041024518_inmigracionTablas4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

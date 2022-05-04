@@ -43,7 +43,7 @@ namespace DAL1StSharp.Modelos
         public Sucursal Sucursal { get; set; } //FK Sucursal
         public ICollection<Peticion> Peticion { get; set; }
         //FK N:M ClienteCuenta
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
+        public virtual ICollection<ClienteCuenta> ClienteCuenta { get; set; }
 
         
     }

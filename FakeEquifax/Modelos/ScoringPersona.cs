@@ -10,6 +10,6 @@ namespace FakeEquifax.Modelos
         public Persona Persona { get; set; }
         public bool IsOk { get; set; }
 
-        public bool Errores { get; set; }
+        public string Errores { get; set; }
     }
 }

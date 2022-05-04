@@ -7,24 +7,28 @@ using System.Data.Entity;
 namespace DAL1StSharp.Modelos
 {
     [Table("___ClienteCuenta")]
-   /* public class ClienteCuenta
+   public class ClienteCuenta
     {
-       
-
         
-        public Cliente ClienteAutorizado { get; set; } //FK Cliente
+        public enum TipoCliente 
+        { 
+            Titular,
+            Autorizado,
+            None
+        }
+        [Key]
+        public int IdClienteCuenta { get; set; }    
+        [Column("TipoCliente", TypeName = "int")]
+        public TipoCliente ClienteTipo { get; set; } //FK Cliente
         [Column("FechaAlta", TypeName = "Date")]
-        [MaxLength(15)]
+        
         public DateTime FechaAlta { get; set; }
         [Column("FechaBaja", TypeName = "Date")]
-        [MaxLength(15)]
+        
         public DateTime FechaBaja { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Cuenta> Cuenta { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+       
     }
-}*/
+}
