@@ -14,7 +14,8 @@ Public Class Inicio
             Dim usuarios = ctx.Usuarios.ToList
             For Each i In usuarios
                 If i.NumUsuario = tbUsuario.Text And i.Password = tbContrasena.Password Then
-                    Dim peticiones As New Peticiones
+                    Configuracion.usuariologeado = i.NumUsuario
+                    Dim peticiones As New Peticiones()
                     peticiones.Show()
                     Me.Close()
                     Exit For

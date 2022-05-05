@@ -1,6 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
 Imports Serilog
 Imports Serilog.Events
+Imports DAL1StSharp.Modelos
 
 Public Class AgregarCliente
     Dim ctx As New DAL1StSharp.DAL1stContext
@@ -47,6 +48,25 @@ Public Class AgregarCliente
                             TxbloxInfoMovil.Foreground = Brushes.Black
 
                             'Insertar en la base de datos
+                            Dim c As New Cliente
+                            c.DocumentoId = tbdocumento.Text
+                            c.Telefono = TxbloxInfotlf.Text
+                            c.Movil = TxbloxInfoMovil.Text
+                            c.Direccion = TxbloxInfoDireccion.Text
+                            c.CodPostal = TxbloxInfoCP.Text
+                            c.Ciudad = TxbloxInfoCiudad.Text
+                            c.Provincia = TxbloxInfoProvincia.Text
+                            c.Nacionalidad = TxbloxInfoNacionalidad.Text
+                            c.Email = TxbloxInfoEmail.Text
+                            If cbTipo.SelectedIndex = 2 Then
+                                c.RazonSocial = TxboxInfoNombre.Text
+                            Else
+                                c.Nombre = TxboxInfoNombre.Text
+                                c.Apellidos = TxbloxInfoApellidos.Text
+                                c.FechaNacimiento = dpFecha.Text
+
+                            End If
+
 
 
                             Log.Information("Cliente añadido con exito.")

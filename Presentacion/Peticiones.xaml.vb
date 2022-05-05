@@ -3,18 +3,18 @@
 Public Class Peticiones
 
     Dim ctx As New DAL1StSharp.DAL1stContext
+    'Dim numUsuario As Integer
     Public Sub New()
         InitializeComponent()
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
         Log.Information("Inicio ventana peticiones.")
         cargar()
-
+        'numUsuario = Configuracion.usuariologeado
     End Sub
 
     Private Sub PantallaInformacion(sender As Object, e As RoutedEventArgs)
 
         Dim migrid As ListViewItem = sender
-
 
         If lvPeticiones.Items.IsEmpty Then
         Else
@@ -26,21 +26,20 @@ Public Class Peticiones
     End Sub
 
     Private Sub OnClick_Buscar(sender As Object, e As RoutedEventArgs)
-        ctx.Configuration.LazyLoadingEnabled = False
-        Dim consultaPet = ctx.Peticiones.ToList
-
+        Dim consultaPet = ctx.Peticiones.Include("Cliente").ToList
         lvPeticiones.Items.Clear()
         For Each i In consultaPet
-            If i.Cliente.DocumentoId.ToUpper = TextBuscador.Text.ToUpper Then
+            If i.Cliente.DocumentoId.ToUpper = TextBuscador.Text.ToUpper Or i.IdPeticion.ToString = TextBuscador.Text Then
                 lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = i.Cliente.DocumentoId.ToUpper, .estado = i.Estado})
             End If
         Next
+        TextBuscador.Text = ""
 
     End Sub
 
     Private Sub OnClic_AniadirPeticion(sender As Object, e As RoutedEventArgs)
         Log.Information("llama a añadir peticion nueva")
-        Dim agregarpet As New AgregarPeticion
+        Dim agregarpet As New AgregarPeticion(Me)
         agregarpet.Show()
         'OPCION -> QUE SE RECARGUE SOLAS LAS PETICIONES
     End Sub
@@ -57,20 +56,11 @@ Public Class Peticiones
 
     Public Sub cargar()
         ctx = New DAL1StSharp.DAL1stContext
-        Dim consultaPet = Nothing
-        Dim consultacli = Nothing
-        consultaPet = ctx.Peticiones.ToList
-        consultacli = ctx.Clientes.ToList
+        Dim consultaPet = ctx.Peticiones.Include("Cliente").ToList
 
         lvPeticiones.Items.Clear()
         For Each i In consultaPet
-            For Each e In consultacli
-                If i.Cliente.IdCliente = e.IdCliente Then
-                    lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = e.DocumentoId.ToUpper, .estado = i.Estado})
-                End If
-            Next
-
-
+            lvPeticiones.Items.Add(New With {.id = i.IdPeticion, .documento = i.Cliente.DocumentoId.ToUpper, .estado = i.Estado})
         Next
 
     End Sub

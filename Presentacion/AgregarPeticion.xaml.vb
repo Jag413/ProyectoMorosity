@@ -4,13 +4,20 @@ Imports System.Net
 Imports System.Net.WebException
 Imports System.Text
 Imports System.Text.RegularExpressions
+Imports DAL1StSharp.Modelos
 Imports Newtonsoft.Json
 
 Public Class AgregarPeticion
-
+    Dim pant As Peticiones
+    Dim numUsuario As Integer
     Dim ctx As New DAL1StSharp.DAL1stContext
     Public Sub New()
         InitializeComponent()
+    End Sub
+    Public Sub New(pantalla As Peticiones)
+        InitializeComponent()
+        pant = pantalla
+        numUsuario = Configuracion.usuariologeado
     End Sub
 
     Private Async Sub OnClic_Enviar(sender As Object, e As RoutedEventArgs)
@@ -41,6 +48,13 @@ Public Class AgregarPeticion
                     Dim jsondata As String = JsonConvert.SerializeObject(c)
                     Dim restcontent As New Http.StringContent(jsondata, Encoding.UTF8, "application/json")
                     Dim restresponse As Http.HttpResponseMessage = Await client.PostAsync(resturl, restcontent)
+                    Dim a As New Peticion
+                    a.Cliente = ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).FirstOrDefault
+                    a.Estado = "Pendiente"
+                    a.IdUsuarioInsercion = numUsuario
+                    'a.FechaInsercion = Date.Today
+                    ctx.Peticiones.Add(a)
+                    ctx.SaveChanges()
 
                     If restresponse.IsSuccessStatusCode Then
                         Dim mensaje As String = "¡Peticion enviada corecctamente!"
@@ -48,6 +62,7 @@ Public Class AgregarPeticion
                         Dim style As MsgBoxStyle = MsgBoxStyle.Information
                         Dim response As Integer = MsgBox(mensaje, style, titulo)
                     End If
+                    pant.cargar()
                     Close()
                 Else
                     Dim titulo As String = "¡ERROR!"

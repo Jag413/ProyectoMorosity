@@ -94,6 +94,14 @@
     <Compile Include="Migrations\202205041527098_nullables1.designer.cs">
       <DependentUpon>202205041527098_nullables1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205050914239_actualizartablas1.cs" />
+    <Compile Include="Migrations\202205050914239_actualizartablas1.designer.cs">
+      <DependentUpon>202205050914239_actualizartablas1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205050928169_actualizartablas2.cs" />
+    <Compile Include="Migrations\202205050928169_actualizartablas2.designer.cs">
+      <DependentUpon>202205050928169_actualizartablas2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -142,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205041527098_nullables1.resx">
       <DependentUpon>202205041527098_nullables1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050914239_actualizartablas1.resx">
+      <DependentUpon>202205050914239_actualizartablas1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050928169_actualizartablas2.resx">
+      <DependentUpon>202205050928169_actualizartablas2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

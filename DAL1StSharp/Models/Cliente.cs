@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,8 +20,10 @@ namespace DAL1StSharp.Modelos
         [MaxLength(20)]
         public string Nombre { get; set; }
         [Column("Apellidos", TypeName = "nvarchar")]
-        [MaxLength(25)]
+        [MaxLength(25)]       
         public string Apellidos { get; set; }
+        [Column("FechaNacimiento", TypeName = "Date")]
+        public DateTime? FechaNacimiento { get; set; } 
         [Column("Nacionalidad", TypeName = "nvarchar")]
         [MaxLength(20)]
         public string Nacionalidad { get; set; }
@@ -42,6 +45,9 @@ namespace DAL1StSharp.Modelos
         [Column("Ciudad", TypeName = "nvarchar")]
         [MaxLength(25)]
         public string Ciudad { get; set; }
+        [Column("Provincia", TypeName = "nvarchar")]
+        [MaxLength(30)]
+        public string Provincia { get; set; }
         //public int dSucursal { get; set; } //FK Sucursal
         public Sucursal Sucursal { get; set; } //FK Sucursal
         public ICollection<Peticion> Peticion { get; set; }

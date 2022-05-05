@@ -298,6 +298,7 @@
     <Compile Include="Comun\ClienteDTO.vb" />
     <Compile Include="Comun\Helper.vb" />
     <Compile Include="Comun\PeticionDTO.vb" />
+    <Compile Include="Configuracion.vb" />
     <Compile Include="Inicio.xaml.vb">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
