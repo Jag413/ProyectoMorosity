@@ -15,6 +15,22 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +50,24 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>miclave.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>AECDE2D1F76A86EE13B9102F4053B03F72A4ACA7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DAL1StSharp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -94,13 +128,9 @@
     <Compile Include="Migrations\202205041527098_nullables1.designer.cs">
       <DependentUpon>202205041527098_nullables1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205050914239_actualizartablas1.cs" />
-    <Compile Include="Migrations\202205050914239_actualizartablas1.designer.cs">
-      <DependentUpon>202205050914239_actualizartablas1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205050928169_actualizartablas2.cs" />
-    <Compile Include="Migrations\202205050928169_actualizartablas2.designer.cs">
-      <DependentUpon>202205050928169_actualizartablas2.cs</DependentUpon>
+    <Compile Include="Migrations\202205090846206_pendientes.cs" />
+    <Compile Include="Migrations\202205090846206_pendientes.designer.cs">
+      <DependentUpon>202205090846206_pendientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base.cs" />
@@ -118,6 +148,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DAL1StSharp_TemporaryKey.pfx" />
+    <None Include="miclave.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -151,12 +183,21 @@
     <EmbeddedResource Include="Migrations\202205041527098_nullables1.resx">
       <DependentUpon>202205041527098_nullables1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205050914239_actualizartablas1.resx">
-      <DependentUpon>202205050914239_actualizartablas1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205090846206_pendientes.resx">
+      <DependentUpon>202205090846206_pendientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205050928169_actualizartablas2.resx">
-      <DependentUpon>202205050928169_actualizartablas2.cs</DependentUpon>
-    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -5,10 +5,12 @@ Imports DAL1StSharp.Modelos
 
 Public Class AgregarCliente
     Dim ctx As New DAL1StSharp.DAL1stContext
+    Dim numUsuario As Integer
 
     Public Sub New()
 
         InitializeComponent()
+        numUsuario = Configuracion.usuariologeado
 
         Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
         Log.Information("Inicio ventana AgregarCliente.")
@@ -42,8 +44,8 @@ Public Class AgregarCliente
                 TxblocInfoNIF.Foreground = Brushes.Black
                 If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
                     TxbloxInfoEmail.Foreground = Brushes.Black
-                    If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Then
-                        TxbloxInfotlf.Foreground = Brushes.Black
+                    If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Or TxbloxInfotlf.Text = "" Then
+                        TxblocInfotlf.Foreground = Brushes.Black
                         If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
                             TxbloxInfoMovil.Foreground = Brushes.Black
 
@@ -66,7 +68,9 @@ Public Class AgregarCliente
                                 c.FechaNacimiento = dpFecha.Text
 
                             End If
-
+                            c.IdUsuarioInsercion = numUsuario
+                            ctx.Clientes.Add(c)
+                            ctx.SaveChanges()
 
 
                             Log.Information("Cliente añadido con exito.")
@@ -83,7 +87,7 @@ Public Class AgregarCliente
                             TxbloxInfoMovil.Foreground = Brushes.Red
                         End If
                     Else
-                        TxbloxInfotlf.Foreground = Brushes.Red
+                        TxblocInfotlf.Foreground = Brushes.Red
                     End If
                 Else
                     TxbloxInfoEmail.Foreground = Brushes.Red
