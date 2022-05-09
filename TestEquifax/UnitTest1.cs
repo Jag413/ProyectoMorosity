@@ -636,12 +636,12 @@ namespace TestEquifax
         {
             //Console.WriteLine(InfoMin);
 
-            var pic = new Persona()
-            {
-                //DocumentoID = "00000000T",
-                Nombre = "Pedro",
-                Apellido = "PicaPiedra"
-            };
+            //var pic = new Persona()
+            //{
+            //    //DocumentoID = "00000000T",
+            //    Nombre = "Pedro",
+            //    Apellido = "PicaPiedra"
+            //};
             string a = @"{
 ""nombre"": ""Pedro"",
 ""apellido"": ""PicaPiedra"",
@@ -663,13 +663,13 @@ namespace TestEquifax
   ]
 }";
 
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string picap = JsonSerializer.Serialize<Persona>(pic, options);
+            //var options = new JsonSerializerOptions { WriteIndented = true };
+            //string picap = JsonSerializer.Serialize<Persona>(pic, options);
 
-            Persona p = JsonSerializer.Deserialize<Persona>(a);
-            Persona h = JsonSerializer.Deserialize<Persona>(hijos);
+            ////Persona p = JsonSerializer.Deserialize<Persona>(a);
+            ////Persona h = JsonSerializer.Deserialize<Persona>(hijos);
 
-            Console.WriteLine(h);
+            //Console.WriteLine(h);
         }
 
 

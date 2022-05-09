@@ -10,6 +10,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
@@ -32,6 +41,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryModelos\ClassLibraryModelos.csproj" />
     <ProjectReference Include="..\ClassLibraryRabbit\ClassLibraryRabbit.csproj" />
+    <ProjectReference Include="..\DAL1StSharp\DAL1StSharp.csproj" />
   </ItemGroup>
 
 </Project>

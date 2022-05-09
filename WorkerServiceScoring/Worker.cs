@@ -20,6 +20,7 @@ namespace WorkerServiceScoring
         {
             _logger = logger;
             //_configuration = configuration;
+            
             InitRabbitMQ();
         }
 
@@ -76,7 +77,8 @@ namespace WorkerServiceScoring
         {
             Console.WriteLine(content);
             _logger.LogInformation($"consumer received {content}");
-            Persona MensajePersonaScoring = JsonSerializer.Deserialize<Persona>(content);
+            
+            //Persona MensajePersonaScoring = JsonSerializer.Deserialize<Persona>(content);
             //TODO enviar a la api el mensaje minimo equifax
            
 

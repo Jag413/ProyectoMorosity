@@ -24,7 +24,7 @@ namespace DAL1StSharp
         public DbSet<DAL1StSharp.Modelos.Movimiento> Movimientos { get; set; }
         public DbSet<DAL1StSharp.Modelos.ClienteCuenta> ClienteCuentas { get; set; }
         public DbSet<DAL1StSharp.Modelos.Usuario> Usuarios { get; set; }
-
+        public DbSet<DAL1StSharp.Modelos.ResultadoEquifax> ResultadoEquifaxs { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
