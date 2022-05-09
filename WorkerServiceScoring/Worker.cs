@@ -3,6 +3,9 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using FakeEquifax.Modelos;
 using System.Text.Json;
+using RestSharp;
+using DAL1StSharp.Modelos;
+using WorkerServiceScoring.Comun;
 
 namespace WorkerServiceScoring
 {
@@ -20,8 +23,11 @@ namespace WorkerServiceScoring
         {
             _logger = logger;
             //_configuration = configuration;
+            
             InitRabbitMQ();
         }
+
+       
 
         private void InitRabbitMQ()
         {
@@ -72,13 +78,32 @@ namespace WorkerServiceScoring
             base.Dispose();
         }
 
-        private bool ManejadorMensajes(string content)
+        private async Task<bool> ManejadorMensajes(string content)
         {
             Console.WriteLine(content);
             _logger.LogInformation($"consumer received {content}");
-            Persona MensajePersonaScoring = JsonSerializer.Deserialize<Persona>(content);
+
+            //Persona MensajePersonaScoring = JsonSerializer.Deserialize<Persona>(content);
             //TODO enviar a la api el mensaje minimo equifax
-           
+
+            var persona = System.Text.Json.JsonSerializer.Deserialize<PersonaScoringBase>(content);
+
+
+            var millamada = new ScoringStrategyEquifax();
+            var respuesta = await millamada.ConsultarDatosEmpresaScoring(persona);
+            try
+            {
+                var resultado = millamada.RegistrarDatosRespuesta(respuesta, persona);
+                _logger.LogInformation($"resultado registro {resultado}");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+               
+            
+
 
             return true;
         }
@@ -97,6 +122,7 @@ namespace WorkerServiceScoring
             if (resultado)
             {
                 _channel.BasicAck(e.DeliveryTag, false);
+
             } 
             else
             {

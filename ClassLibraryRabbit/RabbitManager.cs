@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.Extensions.ObjectPool;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace ClassLibraryRabbit;
 
@@ -44,8 +45,35 @@ public class RabbitManager : IRabbitManager
         }  
     }
 
-    /*public void Consumir<T>(string queueName) where T : class
+    public void Consumir<T>(string exchangeName) where T : class
     {
-        throw new NotImplementedException();
-    }*/
+        var Channel = _objectPool.Get();
+
+        try
+        {
+            Channel.QueueDeclare(queue: "exchange.scoring.dev", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            var Consumer = new EventingBasicConsumer(Channel);
+
+            Consumer.Received += (model, ea) =>
+            {
+                var Message = Encoding.UTF8.GetString(ea.Body.ToArray());
+                Console.WriteLine(Message);
+                Thread.Sleep(1000);
+                Console.WriteLine("Done");
+            };
+            Channel.BasicConsume(queue: "exchange.scoring.dev", autoAck: true, consumer: Consumer);
+            Console.ReadLine();
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally 
+        { 
+            _objectPool.Return(Channel); 
+        }
+    }
+
+
+    
 }  
