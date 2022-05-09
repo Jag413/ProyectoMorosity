@@ -46,12 +46,8 @@ Public Class AgregarPeticion
                     a.Cliente = ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).FirstOrDefault
                     a.Estado = "Pendiente"
                     a.IdUsuarioInsercion = numUsuario
-                    'a.FechaInsercion = Date.Today
                     ctx.Peticiones.Add(a)
                     ctx.SaveChanges()
-
-
-
 
 
                     Dim c As New PersonaScoringBase

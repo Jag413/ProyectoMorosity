@@ -40,6 +40,9 @@
     End Sub
 
     Private Sub OnClick_Aceptar(sender As Object, e As RoutedEventArgs)
+        Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+        mipeticion.IsOk = True
+        ctx.SaveChanges()
         pantallaOr.cargar()
         Close()
     End Sub

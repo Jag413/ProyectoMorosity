@@ -39,7 +39,6 @@ public class ScoringStrategyEquifax : IScoringStrategy
             if (peticion != null)
             {
                 peticion.Estado = "Aceptado";
-                peticion.IsOk = true;
                 peticion.FechaUltimaActualizacion = DateTime.Now;
 
                 ctx.SaveChanges();
@@ -50,7 +49,6 @@ public class ScoringStrategyEquifax : IScoringStrategy
             if (peticion != null)
             {
                 peticion.Estado = "Denegado";
-                peticion.IsOk = false;
                 peticion.Razones = data.Informacion;
                 peticion.FechaUltimaActualizacion = DateTime.Now;
                 ctx.SaveChanges();

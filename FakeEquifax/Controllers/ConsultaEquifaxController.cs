@@ -11,17 +11,7 @@ namespace FakeEquifax.Controllers
     [Route("[controller]")]
     public class ConsultaEquifaxController : Controller
     {
-        List<PersonaScoringBase> personas = new List<PersonaScoringBase>
-        {
-            new PersonaScoringBase { tipo = "DNI", documento = "83399573D" },
-            new PersonaScoringBase { tipo = "NIE", documento = "Z0362389Y" },
-            new PersonaScoringBase { tipo = "DNI", documento = "57389748X" },
-            new PersonaScoringBase { tipo = "DNI", documento = "08986742K" },
-            new PersonaScoringBase { tipo = "CIF", documento = "P9004199G" },
-            new PersonaScoringBase { tipo = "DNI", documento = "53093310H" },
-            new PersonaScoringBase { tipo = "CIF", documento = "N4906568C" },
-        };
-        // GET: ConsultaEquifaxController/Create
+        
         [HttpGet]
         public ActionResult Create()
         {

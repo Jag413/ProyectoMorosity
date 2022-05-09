@@ -19,6 +19,7 @@ Public Class Inicio
                     Dim peticiones As New Peticiones()
                     peticiones.Show()
                     Me.Close()
+                    usuarioCorrecto = False
                     Exit For
                 ElseIf i.NumUsuario = tbUsuario.Text And Not i.Password = tbContrasena.Password Then
                     Dim mensaje As String = "Contraseña incorrecta"

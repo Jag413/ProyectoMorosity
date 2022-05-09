@@ -56,7 +56,7 @@ Public Class Peticiones
 
     Public Sub cargar()
         ctx = New DAL1StSharp.DAL1stContext
-        Dim consultaPet = ctx.Peticiones.Include("Cliente").ToList
+        Dim consultaPet = ctx.Peticiones.Include("Cliente").Where(Function(x) Not x.IsOk).ToList
 
         lvPeticiones.Items.Clear()
         For Each i In consultaPet
