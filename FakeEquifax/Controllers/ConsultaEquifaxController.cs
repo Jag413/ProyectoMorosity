@@ -7,7 +7,7 @@ using System.Linq;
 namespace FakeEquifax.Controllers
 {
     [ApiController]
-    [Route("controller")]
+    [Route("[controller]")]
     public class ConsultaEquifaxController : Controller
     {
         List<PersonaScoringBase> personas = new List<PersonaScoringBase>
