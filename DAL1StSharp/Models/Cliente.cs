@@ -46,7 +46,7 @@ namespace DAL1StSharp.Modelos
         [MaxLength(25)]
         public string Ciudad { get; set; }
         [Column("Provincia", TypeName = "nvarchar")]
-        [MaxLength(30)]
+        [MaxLength(35)]
         public string Provincia { get; set; }
         //public int dSucursal { get; set; } //FK Sucursal
         public Sucursal Sucursal { get; set; } //FK Sucursal
