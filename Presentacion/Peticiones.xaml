@@ -102,7 +102,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <EventSetter Event="UIElement.PreviewMouseLeftButtonDown" Handler="PantallaInformacion" />
+                        <EventSetter Event="MouseDoubleClick" Handler="PantallaInformacion" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>

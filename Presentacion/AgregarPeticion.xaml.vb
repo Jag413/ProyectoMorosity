@@ -40,14 +40,8 @@ Public Class AgregarPeticion
                 Dim response As Integer = MsgBox(mensaje, style, titulo)
             Else
                 If valdni Or valnie Or valcif Then
-                    Dim c As New PersonaScoringBase
-                    c.tipo = cbTipo.Text
-                    c.documento = tbDni.Text
-                    Dim resturl As String = "https://localhost:44371/Equifax/GetDatta"
-                    Dim client As New Http.HttpClient
-                    Dim jsondata As String = JsonConvert.SerializeObject(c)
-                    Dim restcontent As New Http.StringContent(jsondata, Encoding.UTF8, "application/json")
-                    Dim restresponse As Http.HttpResponseMessage = Await client.PostAsync(resturl, restcontent)
+
+
                     Dim a As New Peticion
                     a.Cliente = ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).FirstOrDefault
                     a.Estado = "Pendiente"
@@ -55,6 +49,20 @@ Public Class AgregarPeticion
                     'a.FechaInsercion = Date.Today
                     ctx.Peticiones.Add(a)
                     ctx.SaveChanges()
+
+
+
+
+
+                    Dim c As New PersonaScoringBase
+                    c.tipo = cbTipo.Text
+                    c.documento = tbDni.Text
+                    c.idpeticion = a.IdPeticion
+                    Dim resturl As String = "https://localhost:44371/Equifax/GetDatta"
+                    Dim client As New Http.HttpClient
+                    Dim jsondata As String = JsonConvert.SerializeObject(c)
+                    Dim restcontent As New Http.StringContent(jsondata, Encoding.UTF8, "application/json")
+                    Dim restresponse As Http.HttpResponseMessage = Await client.PostAsync(resturl, restcontent)
 
                     If restresponse.IsSuccessStatusCode Then
                         Dim mensaje As String = "¡Peticion enviada corecctamente!"
@@ -90,10 +98,12 @@ Public Class PersonaScoringBase
 
     Public tipo As String
     Public documento As String
+    Public idpeticion As Integer
 
     Public Sub New()
         tipo = ""
         documento = ""
+        idpeticion = 0
     End Sub
 
 End Class
