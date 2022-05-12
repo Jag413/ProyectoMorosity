@@ -29,6 +29,7 @@ Public Class Inicio
                     tbContrasena.Password = ""
                     usuarioCorrecto = False
                     Exit For
+
                 Else
                     usuarioCorrecto = True
                 End If
@@ -45,13 +46,22 @@ Public Class Inicio
 
             End If
 
+
+
         Catch ex As InvalidCastException
-            Dim mensaje As String = "¡Introduce solo numeros!"
-            Dim titulo As String = "Morosity"
-            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-            Dim response As Integer = MsgBox(mensaje, style, titulo)
-            tbUsuario.Text = ""
-            tbContrasena.Password = ""
+            If tbUsuario.Text = "" And tbContrasena.Password = "" Or tbUsuario.Text = "" Then
+                Dim mensaje As String = "Hay campos vacios"
+                Dim titulo As String = "Morosity"
+                Dim style As MsgBoxStyle = MsgBoxStyle.Information
+                Dim response As Integer = MsgBox(mensaje, style, titulo)
+            Else
+                Dim mensaje As String = "¡Introduce solo numeros!"
+                Dim titulo As String = "Morosity"
+                Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                Dim response As Integer = MsgBox(mensaje, style, titulo)
+                tbUsuario.Text = ""
+                tbContrasena.Password = ""
+            End If
         End Try
     End Sub
 End Class

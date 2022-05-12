@@ -41,33 +41,41 @@ Public Class AgregarPeticion
             Else
                 If valdni Or valnie Or valcif Then
 
+                    If ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).Any Then
+                        Dim a As New Peticion
+                        a.Cliente = ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).FirstOrDefault
+                        a.Estado = "Pendiente"
+                        a.IdUsuarioInsercion = numUsuario
+                        ctx.Peticiones.Add(a)
 
-                    Dim a As New Peticion
-                    a.Cliente = ctx.Clientes.Where(Function(p) p.DocumentoId = tbDni.Text).FirstOrDefault
-                    a.Estado = "Pendiente"
-                    a.IdUsuarioInsercion = numUsuario
-                    ctx.Peticiones.Add(a)
-                    ctx.SaveChanges()
 
 
-                    Dim c As New PersonaScoringBase
-                    c.tipo = cbTipo.Text
-                    c.documento = tbDni.Text
-                    c.idpeticion = a.IdPeticion
-                    Dim resturl As String = "https://localhost:44371/Equifax/GetDatta"
-                    Dim client As New Http.HttpClient
-                    Dim jsondata As String = JsonConvert.SerializeObject(c)
-                    Dim restcontent As New Http.StringContent(jsondata, Encoding.UTF8, "application/json")
-                    Dim restresponse As Http.HttpResponseMessage = Await client.PostAsync(resturl, restcontent)
+                        Dim c As New PersonaScoringBase
+                        c.tipo = cbTipo.Text
+                        c.documento = tbDni.Text
+                        c.idpeticion = a.IdPeticion
+                        Dim resturl As String = "https://localhost:44371/Equifax/GetDatta"
+                        Dim client As New Http.HttpClient
+                        Dim jsondata As String = JsonConvert.SerializeObject(c)
+                        Dim restcontent As New Http.StringContent(jsondata, Encoding.UTF8, "application/json")
+                        Dim restresponse As Http.HttpResponseMessage = Await client.PostAsync(resturl, restcontent)
 
-                    If restresponse.IsSuccessStatusCode Then
-                        Dim mensaje As String = "¡Peticion enviada corecctamente!"
+                        If restresponse.IsSuccessStatusCode Then
+                            ctx.SaveChanges()
+                            Dim mensaje As String = "¡Peticion enviada corecctamente!"
+                            Dim titulo As String = "Morosity"
+                            Dim style As MsgBoxStyle = MsgBoxStyle.Information
+                            Dim response As Integer = MsgBox(mensaje, style, titulo)
+                        End If
+                        pant.cargar()
+                        Close()
+                    Else
+                        Dim mensaje As String = "Cliente no existe en la base de datos."
                         Dim titulo As String = "Morosity"
                         Dim style As MsgBoxStyle = MsgBoxStyle.Information
                         Dim response As Integer = MsgBox(mensaje, style, titulo)
+                        tbDni.Clear()
                     End If
-                    pant.cargar()
-                    Close()
                 Else
                     Dim titulo As String = "¡ERROR!"
                     Dim mensaje As String = String.Format("¡{0} no valido!", cbTipo.Text)
