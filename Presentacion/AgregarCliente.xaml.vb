@@ -20,80 +20,95 @@ Public Class AgregarCliente
     Private Sub OnClic_Aniadir(sender As Object, e As RoutedEventArgs)
         Log.Information("Inicio proceso añadir cliente nuevo.")
 
-        Dim valdni = False
-        Dim valnie = False
-        Dim valcif = False
+        Dim validacion = False
         If cbTipo.SelectedIndex = 0 Then
-            valdni = Helper.ValidacionDNI(tbdocumento.Text)
+            validacion = Helper.ValidacionDNI(tbdocumento.Text)
         ElseIf cbTipo.SelectedIndex = 1 Then
-            valnie = Helper.ValidacionNIE(tbdocumento.Text)
+            validacion = Helper.ValidacionNIE(tbdocumento.Text)
         ElseIf cbTipo.SelectedIndex = 2 Then
-            valcif = Helper.ValidacionCIF(tbdocumento.Text)
+            validacion = Helper.ValidacionCIF(tbdocumento.Text)
         End If
 
         If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
             TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
             TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
             Log.Error("Campos vacios.")
-            Dim mensaje As String = "¡Hay campos vacios!"
+            Dim mensaje As String = "¡Hay campos obligatorios vacios!"
             Dim titulo As String = "Morosity"
             Dim style As MsgBoxStyle = MsgBoxStyle.Information
             Dim response As Integer = MsgBox(mensaje, style, titulo)
         Else
-            If valdni Or valnie Or valcif Then
+            If validacion And Helper.ValidacionEmail(TxbloxInfoEmail.Text) And Helper.ComprobacionTelefono(TxbloxInfotlf.Text) _
+                                And Helper.ComprobacionMovil(TxbloxInfoMovil.Text) And Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
                 TxblocInfoNIF.Foreground = Brushes.Black
-                If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
-                    TxbloxInfoEmail.Foreground = Brushes.Black
-                    If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Or TxbloxInfotlf.Text = "" Then
-                        TxblocInfotlf.Foreground = Brushes.Black
-                        If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
-                            TxbloxInfoMovil.Foreground = Brushes.Black
+                TxblocInfoEmail.Foreground = Brushes.Black
+                TxblocInfotlf.Foreground = Brushes.Black
+                TxblocInfoMovil.Foreground = Brushes.Black
+                TxblocInfoCP.Foreground = Brushes.Black
 
-                            'Insertar en la base de datos
-                            Dim c As New Cliente
-                            c.DocumentoId = tbdocumento.Text
-                            c.Telefono = TxbloxInfotlf.Text
-                            c.Movil = TxbloxInfoMovil.Text
-                            c.Direccion = TxbloxInfoDireccion.Text
-                            c.CodPostal = TxbloxInfoCP.Text
-                            c.Ciudad = TxbloxInfoCiudad.Text
-                            c.Provincia = TxbloxInfoProvincia.Text
-                            c.Nacionalidad = TxbloxInfoNacionalidad.Text
-                            c.Email = TxbloxInfoEmail.Text
-                            If cbTipo.SelectedIndex = 2 Then
-                                c.RazonSocial = TxboxInfoNombre.Text
-                            Else
-                                c.Nombre = TxboxInfoNombre.Text
-                                c.Apellidos = TxbloxInfoApellidos.Text
-                                c.FechaNacimiento = dpFecha.Text
-
-                            End If
-                            c.IdUsuarioInsercion = numUsuario
-                            ctx.Clientes.Add(c)
-                            ctx.SaveChanges()
-
-
-                            Log.Information("Cliente añadido con exito.")
-                            Dim mensaje As String = "¡Cliente Añadido!"
-                            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-                            Dim response As Integer = MsgBox(mensaje, style)
-
-                            ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
-
-
-
-                            limpiar()
-                        Else
-                            TxbloxInfoMovil.Foreground = Brushes.Red
-                        End If
-                    Else
-                        TxblocInfotlf.Foreground = Brushes.Red
-                    End If
+                'Insertar en la base de datos
+                Dim c As New Cliente
+                c.DocumentoId = tbdocumento.Text
+                c.Telefono = TxbloxInfotlf.Text
+                c.Movil = TxbloxInfoMovil.Text
+                c.Direccion = TxbloxInfoDireccion.Text
+                c.CodPostal = TxbloxInfoCP.Text
+                c.Ciudad = TxbloxInfoCiudad.Text
+                c.Provincia = TxbloxInfoProvincia.Text
+                c.Nacionalidad = TxbloxInfoNacionalidad.Text
+                c.Email = TxbloxInfoEmail.Text
+                If cbTipo.SelectedIndex = 2 Then
+                    c.RazonSocial = TxboxInfoNombre.Text
                 Else
-                    TxbloxInfoEmail.Foreground = Brushes.Red
+                    c.Nombre = TxboxInfoNombre.Text
+                    c.Apellidos = TxbloxInfoApellidos.Text
+                    c.FechaNacimiento = dpFecha.Text
+
                 End If
+                c.IdUsuarioInsercion = numUsuario
+                ctx.Clientes.Add(c)
+                ctx.SaveChanges()
+
+
+                Log.Information("Cliente añadido con exito.")
+                Dim mensaje As String = "¡Cliente Añadido!"
+                Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                Dim response As Integer = MsgBox(mensaje, style)
+
+                ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
+
+                limpiar()
+
             Else
-                TxblocInfoNIF.Foreground = Brushes.Red
+                If validacion Then
+                    TxblocInfoNIF.Foreground = Brushes.Black
+                Else
+                    TxblocInfoNIF.Foreground = Brushes.Red
+                End If
+
+                If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
+                    TxblocInfoEmail.Foreground = Brushes.Black
+                Else
+                    TxblocInfoEmail.Foreground = Brushes.Red
+                End If
+
+                If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Then
+                    TxblocInfotlf.Foreground = Brushes.Black
+                Else
+                    TxblocInfotlf.Foreground = Brushes.Red
+                End If
+
+                If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
+                    TxblocInfoMovil.Foreground = Brushes.Black
+                Else
+                    TxblocInfoMovil.Foreground = Brushes.Red
+                End If
+
+                If Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
+                    TxblocInfoCP.Foreground = Brushes.Black
+                Else
+                    TxblocInfoCP.Foreground = Brushes.Red
+                End If
             End If
         End If
 

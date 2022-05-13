@@ -206,7 +206,8 @@ Public Class Helper
             Else
                 Return False
             End If
-
+        ElseIf tlf = "" Then
+            Return True
         Else
             Return False
         End If
@@ -220,6 +221,14 @@ Public Class Helper
             Else
                 Return False
             End If
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Shared Function ComprobacionCP(ByVal cp As String) As Boolean
+        If Regex.IsMatch(cp, "[0-9]{5}") Then
+            Return True
         Else
             Return False
         End If
