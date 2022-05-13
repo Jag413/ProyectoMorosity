@@ -62,6 +62,8 @@ Public Class AgregarCliente
                     c.Email = TxbloxInfoEmail.Text
                     If cbTipo.SelectedIndex = 2 Then
                         c.RazonSocial = TxboxInfoNombre.Text
+                        c.Apellidos = ""
+                        c.FechaNacimiento = ""
                     Else
                         c.Nombre = TxboxInfoNombre.Text
                         c.Apellidos = TxbloxInfoApellidos.Text
