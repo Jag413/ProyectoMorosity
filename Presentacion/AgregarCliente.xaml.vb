@@ -29,6 +29,10 @@ Public Class AgregarCliente
             validacion = Helper.ValidacionCIF(tbdocumento.Text)
         End If
 
+        If cbTipo.SelectedIndex = 2 Then
+            TxbloxInfoApellidos.Text = "  "
+        End If
+
         If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
             TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
             TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
