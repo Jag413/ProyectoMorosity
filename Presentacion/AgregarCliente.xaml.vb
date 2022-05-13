@@ -38,78 +38,88 @@ Public Class AgregarCliente
             Dim style As MsgBoxStyle = MsgBoxStyle.Information
             Dim response As Integer = MsgBox(mensaje, style, titulo)
         Else
-            If validacion And Helper.ValidacionEmail(TxbloxInfoEmail.Text) And Helper.ComprobacionTelefono(TxbloxInfotlf.Text) _
+            Try
+
+
+                If validacion And Helper.ValidacionEmail(TxbloxInfoEmail.Text) And Helper.ComprobacionTelefono(TxbloxInfotlf.Text) _
                                 And Helper.ComprobacionMovil(TxbloxInfoMovil.Text) And Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
-                TxblocInfoNIF.Foreground = Brushes.Black
-                TxblocInfoEmail.Foreground = Brushes.Black
-                TxblocInfotlf.Foreground = Brushes.Black
-                TxblocInfoMovil.Foreground = Brushes.Black
-                TxblocInfoCP.Foreground = Brushes.Black
-
-                'Insertar en la base de datos
-                Dim c As New Cliente
-                c.DocumentoId = tbdocumento.Text
-                c.Telefono = TxbloxInfotlf.Text
-                c.Movil = TxbloxInfoMovil.Text
-                c.Direccion = TxbloxInfoDireccion.Text
-                c.CodPostal = TxbloxInfoCP.Text
-                c.Ciudad = TxbloxInfoCiudad.Text
-                c.Provincia = TxbloxInfoProvincia.Text
-                c.Nacionalidad = TxbloxInfoNacionalidad.Text
-                c.Email = TxbloxInfoEmail.Text
-                If cbTipo.SelectedIndex = 2 Then
-                    c.RazonSocial = TxboxInfoNombre.Text
-                Else
-                    c.Nombre = TxboxInfoNombre.Text
-                    c.Apellidos = TxbloxInfoApellidos.Text
-                    c.FechaNacimiento = dpFecha.Text
-
-                End If
-                c.IdUsuarioInsercion = numUsuario
-                ctx.Clientes.Add(c)
-                ctx.SaveChanges()
-
-
-                Log.Information("Cliente añadido con exito.")
-                Dim mensaje As String = "¡Cliente Añadido!"
-                Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-                Dim response As Integer = MsgBox(mensaje, style)
-
-                ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
-
-                limpiar()
-
-            Else
-                If validacion Then
                     TxblocInfoNIF.Foreground = Brushes.Black
-                Else
-                    TxblocInfoNIF.Foreground = Brushes.Red
-                End If
-
-                If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
                     TxblocInfoEmail.Foreground = Brushes.Black
-                Else
-                    TxblocInfoEmail.Foreground = Brushes.Red
-                End If
-
-                If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Then
                     TxblocInfotlf.Foreground = Brushes.Black
-                Else
-                    TxblocInfotlf.Foreground = Brushes.Red
-                End If
-
-                If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
                     TxblocInfoMovil.Foreground = Brushes.Black
-                Else
-                    TxblocInfoMovil.Foreground = Brushes.Red
-                End If
-
-                If Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
                     TxblocInfoCP.Foreground = Brushes.Black
+
+                    'Insertar en la base de datos
+                    Dim c As New Cliente
+                    c.DocumentoId = tbdocumento.Text
+                    c.Telefono = TxbloxInfotlf.Text
+                    c.Movil = TxbloxInfoMovil.Text
+                    c.Direccion = TxbloxInfoDireccion.Text
+                    c.CodPostal = TxbloxInfoCP.Text
+                    c.Ciudad = TxbloxInfoCiudad.Text
+                    c.Provincia = TxbloxInfoProvincia.Text
+                    c.Nacionalidad = TxbloxInfoNacionalidad.Text
+                    c.Email = TxbloxInfoEmail.Text
+                    If cbTipo.SelectedIndex = 2 Then
+                        c.RazonSocial = TxboxInfoNombre.Text
+                    Else
+                        c.Nombre = TxboxInfoNombre.Text
+                        c.Apellidos = TxbloxInfoApellidos.Text
+                        c.FechaNacimiento = dpFecha.Text
+
+                    End If
+                    c.IdUsuarioInsercion = numUsuario
+                    ctx.Clientes.Add(c)
+                    ctx.SaveChanges()
+
+
+                    Log.Information("Cliente añadido con exito.")
+                    Dim mensaje As String = "¡Cliente Añadido!"
+                    Dim title As String = "Morosity"
+                    Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                    Dim response As Integer = MsgBox(mensaje, style, title)
+
+                    ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
+
+                    limpiar()
+
                 Else
-                    TxblocInfoCP.Foreground = Brushes.Red
+                    If validacion Then
+                        TxblocInfoNIF.Foreground = Brushes.Black
+                    Else
+                        TxblocInfoNIF.Foreground = Brushes.Red
+                    End If
+
+                    If Helper.ValidacionEmail(TxbloxInfoEmail.Text) Then
+                        TxblocInfoEmail.Foreground = Brushes.Black
+                    Else
+                        TxblocInfoEmail.Foreground = Brushes.Red
+                    End If
+
+                    If Helper.ComprobacionTelefono(TxbloxInfotlf.Text) Then
+                        TxblocInfotlf.Foreground = Brushes.Black
+                    Else
+                        TxblocInfotlf.Foreground = Brushes.Red
+                    End If
+
+                    If Helper.ComprobacionMovil(TxbloxInfoMovil.Text) Then
+                        TxblocInfoMovil.Foreground = Brushes.Black
+                    Else
+                        TxblocInfoMovil.Foreground = Brushes.Red
+                    End If
+
+                    If Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
+                        TxblocInfoCP.Foreground = Brushes.Black
+                    Else
+                        TxblocInfoCP.Foreground = Brushes.Red
+                    End If
                 End If
-            End If
+            Catch ex As InvalidCastException
+                Dim mensaje As String = "La fecha de nacimiento no puede contener letras, solo 00/00/0000"
+                Dim title As String = "Morosity"
+                Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                Dim response As Integer = MsgBox(mensaje, style, title)
+            End Try
         End If
 
 
