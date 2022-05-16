@@ -15,19 +15,19 @@
     End Sub
     Private Sub OnClick_CambiaEstado(sender As Object, e As RoutedEventArgs)
         'Cambiar el estado al que corresponda
-        Dim mensaje As String = "¿Deseas aceptar la peticion?"
+        Dim mensaje As String = "¿Deseas cambiar el estado?"
         Dim titulo As String = "Morosity"
         Dim style As MsgBoxStyle = MsgBoxStyle.YesNoCancel
         Dim response As Integer = MsgBox(mensaje, style, titulo)
-
+        Dim mipeticion
         If response = 6 Then
             TxblocInfoEstadoActual.Text = "Aceptada"
-            Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+            mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
             mipeticion.Estado = "Aceptada"
 
         ElseIf response = 7 Then
             TxblocInfoEstadoActual.Text = "Denegada"
-            Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+            mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
             mipeticion.Estado = "Denegada"
 
         End If
@@ -40,11 +40,23 @@
     End Sub
 
     Private Sub OnClick_Aceptar(sender As Object, e As RoutedEventArgs)
-        Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
-        mipeticion.IsOk = True
-        ctx.SaveChanges()
-        pantallaOr.cargar()
-        Close()
+        Dim mensaje As String = "¿Deseas aceptar la peticion?"
+        Dim titulo As String = "Morosity"
+        Dim style As MsgBoxStyle = MsgBoxStyle.OkCancel
+        Dim response As Integer = MsgBox(mensaje, style, titulo)
+        Dim mipeticion
+
+        If response = 1 Then
+            mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+            mipeticion.IsOk = True
+            ctx.SaveChanges()
+            pantallaOr.cargar()
+            Close()
+        End If
+
+        'Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+
+
     End Sub
 
     Private Sub GetDatos(id As Integer)
