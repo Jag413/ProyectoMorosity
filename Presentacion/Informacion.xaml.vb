@@ -42,18 +42,25 @@
     End Sub
 
     Private Sub OnClick_Aceptar(sender As Object, e As RoutedEventArgs)
-        Dim mensaje As String = "¿Deseas aceptar la peticion?"
-        Dim titulo As String = "Morosity"
-        Dim style As MsgBoxStyle = MsgBoxStyle.OkCancel
-        Dim response As Integer = MsgBox(mensaje, style, titulo)
-        Dim mipeticion
+        If TxblocInfoEstadoActual.Text = "Pendiente" Then
+            Dim mensaje As String = "No se puede aceptar una peticion con estado en Pendiente"
+            Dim titulo As String = "Morosity"
+            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+            Dim response As Integer = MsgBox(mensaje, style, titulo)
+        Else
+            Dim mensaje As String = "¿Deseas aceptar la peticion?"
+            Dim titulo As String = "Morosity"
+            Dim style As MsgBoxStyle = MsgBoxStyle.OkCancel
+            Dim response As Integer = MsgBox(mensaje, style, titulo)
+            Dim mipeticion
 
-        If response = 1 Then
-            mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
-            mipeticion.IsOk = True
-            ctx.SaveChanges()
-            pantallaOr.cargar()
-            Close()
+            If response = 1 Then
+                mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
+                mipeticion.IsOk = True
+                ctx.SaveChanges()
+                pantallaOr.cargar()
+                Close()
+            End If
         End If
 
         'Dim mipeticion = ctx.Peticiones.Where(Function(p) p.IdPeticion = idd).FirstOrDefault
