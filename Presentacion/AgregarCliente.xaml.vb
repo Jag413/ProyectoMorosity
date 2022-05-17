@@ -1,6 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿
 Imports Serilog
-Imports Serilog.Events
 Imports DAL1StSharp.Modelos
 
 Public Class AgregarCliente
@@ -12,14 +11,11 @@ Public Class AgregarCliente
         InitializeComponent()
         numUsuario = Configuracion.usuariologeado
 
-        Log.Logger = New LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("C:\Users\SabrinaGP\Desktop\logSeqMorosity.log").CreateLogger
-        Log.Information("Inicio ventana AgregarCliente.")
-
     End Sub
 
     Private Sub OnClic_Aniadir(sender As Object, e As RoutedEventArgs)
         Log.Information("Inicio proceso añadir cliente nuevo.")
-
+        Dim agregar = False
         Dim validacion = False
         If cbTipo.SelectedIndex = 0 Then
             validacion = Helper.ValidacionDNI(tbdocumento.Text)
@@ -32,18 +28,34 @@ Public Class AgregarCliente
         If cbTipo.SelectedIndex = 2 Then
             TxbloxInfoApellidos.Text = "  "
         End If
+        Try
+            If cbTipo.SelectedIndex = 0 Or cbTipo.SelectedIndex = 1 Then
+                If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
+                TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
+                TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Or dpFecha.Text = "" Then
+                    Dim mensaje As String = "¡Hay campos obligatorios vacios!"
+                    Dim titulo As String = "Morosity"
+                    Dim style As MsgBoxStyle = MsgBoxStyle.Information
+                    Dim response As Integer = MsgBox(mensaje, style, titulo)
+                    agregar = False
+                Else
+                    agregar = True
+                End If
+            Else
+                If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
+                TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
+                TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
+                    Dim mensaje As String = "¡Hay campos obligatorios vacios!"
+                    Dim titulo As String = "Morosity"
+                    Dim style As MsgBoxStyle = MsgBoxStyle.Information
+                    Dim response As Integer = MsgBox(mensaje, style, titulo)
+                    agregar = False
+                Else
+                    agregar = True
+                End If
+            End If
 
-        If tbdocumento.Text = "" Or TxboxInfoNombre.Text = "" Or TxbloxInfoApellidos.Text = "" Or TxbloxInfoMovil.Text = "" Or
-            TxbloxInfoDireccion.Text = "" Or TxbloxInfoCP.Text = "" Or TxbloxInfoCiudad.Text = "" Or TxbloxInfoProvincia.Text = "" Or
-            TxbloxInfoNacionalidad.Text = "" Or TxbloxInfoEmail.Text = "" Then
-            Log.Error("Campos vacios.")
-            Dim mensaje As String = "¡Hay campos obligatorios vacios!"
-            Dim titulo As String = "Morosity"
-            Dim style As MsgBoxStyle = MsgBoxStyle.Information
-            Dim response As Integer = MsgBox(mensaje, style, titulo)
-        Else
-            Try
-
+            If agregar Then
 
                 If validacion And Helper.ValidacionEmail(TxbloxInfoEmail.Text) And Helper.ComprobacionTelefono(TxbloxInfotlf.Text) _
                                 And Helper.ComprobacionMovil(TxbloxInfoMovil.Text) And Helper.ComprobacionCP(TxbloxInfoCP.Text) Then
@@ -120,15 +132,13 @@ Public Class AgregarCliente
                         TxblocInfoCP.Foreground = Brushes.Red
                     End If
                 End If
-            Catch ex As InvalidCastException
-                Dim mensaje As String = "La fecha de nacimiento no puede contener letras, solo 00/00/0000"
-                Dim title As String = "Morosity"
-                Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-                Dim response As Integer = MsgBox(mensaje, style, title)
-            End Try
-        End If
-
-
+            End If
+        Catch ex As InvalidCastException
+            Dim mensaje As String = "La fecha de nacimiento no puede contener letras, solo 00/00/0000"
+            Dim title As String = "Morosity"
+            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+            Dim response As Integer = MsgBox(mensaje, style, title)
+        End Try
         'Añadir datos a la base de datos
 
     End Sub

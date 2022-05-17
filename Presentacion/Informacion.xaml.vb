@@ -14,8 +14,10 @@
         GetDatos(id)
     End Sub
     Private Sub OnClick_CambiaEstado(sender As Object, e As RoutedEventArgs)
+
         'Cambiar el estado al que corresponda
-        Dim mensaje As String = "¿Deseas cambiar el estado?"
+        Dim mensaje As String = "¿Deseas cambiar el estado?
+     Si para Aceptada, No para Denegada"
         Dim titulo As String = "Morosity"
         Dim style As MsgBoxStyle = MsgBoxStyle.YesNoCancel
         Dim response As Integer = MsgBox(mensaje, style, titulo)
@@ -76,7 +78,12 @@
                             TxboxInfoNombre.Text = e.Nombre + " " + e.Apellidos
                         End If
                         If Not i.IsOk Then
-                            TxblocInfoRazones.Text = "OK"
+                            If i.Estado = "Pendiente" Then
+                                TxblocInfoRazones.Text = ""
+                            Else
+                                TxblocInfoRazones.Text = "OK"
+                            End If
+
                         Else
                             TxblocInfoRazones.Text = i.Razones
                         End If
