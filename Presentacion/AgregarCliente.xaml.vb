@@ -67,7 +67,7 @@ Public Class AgregarCliente
 
                     'Insertar en la base de datos
                     Dim c As New Cliente
-                    c.DocumentoId = tbdocumento.Text
+                    c.DocumentoId = tbdocumento.Text.ToUpper
                     c.Telefono = TxbloxInfotlf.Text
                     c.Movil = TxbloxInfoMovil.Text
                     c.Direccion = TxbloxInfoDireccion.Text
@@ -90,7 +90,7 @@ Public Class AgregarCliente
 
                     Dim clientes = ctx.Clientes.ToList
                     For Each i In clientes
-                        If i.DocumentoId = c.DocumentoId Then
+                        If Not i.DocumentoId.Contains(c.DocumentoId) Then
                             ctx.Clientes.Add(c)
                             ctx.SaveChanges()
                             Log.Information("Cliente añadido con exito.")

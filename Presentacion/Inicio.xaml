@@ -28,7 +28,7 @@
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="logo" Grid.Column="1" Grid.Row="0">
+        <Grid x:Name="logo" Grid.Column="1" Grid.Row="0" Focusable="True">
             <Image x:Name="imglogo" ToolTip="user" Width="250" HorizontalAlignment="Left" Source="pack://application:,,,/Presentacion;component/Resources/logo2.png" Margin="60,59,0,10">
                 <Image.OpacityMask>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
