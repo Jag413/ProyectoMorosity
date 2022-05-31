@@ -89,29 +89,36 @@ Public Class AgregarCliente
                     c.IdUsuarioInsercion = numUsuario
 
                     Dim clientes = ctx.Clientes.ToList
+                    Dim contiene = False
                     For Each i In clientes
                         If Not i.DocumentoId.Contains(c.DocumentoId) Then
-                            ctx.Clientes.Add(c)
-                            ctx.SaveChanges()
-                            Log.Information("Cliente añadido con exito.")
-                            Dim mensaje As String = "¡Cliente Añadido!"
-                            Dim title As String = "Morosity"
-                            Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
-                            Dim response As Integer = MsgBox(mensaje, style, title)
-
-                            ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
-
-                            limpiar()
-                            Exit For
+                            contiene = True
                         Else
-                            Dim mensajes As String = "El DNI/NIF/NIE ya existe en la base de datos."
-                            Dim titulos As String = "Morosity"
-                            Dim styles As MsgBoxStyle = MsgBoxStyle.Information
-                            Dim responses As Integer = MsgBox(mensajes, styles, titulos)
-
+                            contiene = False
                             Exit For
                         End If
                     Next
+
+                    If contiene Then
+                        ctx.Clientes.Add(c)
+                        ctx.SaveChanges()
+                        Log.Information("Cliente añadido con exito.")
+                        Dim mensaje As String = "¡Cliente Añadido!"
+                        Dim title As String = "Morosity"
+                        Dim style As MsgBoxStyle = MsgBoxStyle.Exclamation
+                        Dim response As Integer = MsgBox(mensaje, style, title)
+
+                        ctx.Clientes.Add(New DAL1StSharp.Modelos.Cliente)
+
+                        limpiar()
+
+                    Else
+                        Dim mensajes As String = "El DNI/NIF/NIE ya existe en la base de datos."
+                        Dim titulos As String = "Morosity"
+                        Dim styles As MsgBoxStyle = MsgBoxStyle.Information
+                        Dim responses As Integer = MsgBox(mensajes, styles, titulos)
+
+                    End If
 
                 Else
                     If validacion Then
